@@ -12,7 +12,7 @@ public class FichaRepositorio implements Exportavel {
     private List<Personagem> fichas = new ArrayList<>();
 
     public List<Personagem> getFichas() {
-        return fichas;
+        return new ArrayList<>(fichas);
     }
 
     public void lerTxt(String caminho) {
