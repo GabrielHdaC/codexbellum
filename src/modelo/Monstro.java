@@ -2,8 +2,6 @@ package modelo;
 
 import combate.Combatente;
 
-import java.util.Objects;
-
 public class Monstro extends Personagem implements Combatente {
     public Monstro() {
     }
@@ -55,6 +53,6 @@ public class Monstro extends Personagem implements Combatente {
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode());
+        return super.hashCode();
     }
 }

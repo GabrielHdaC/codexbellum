@@ -74,6 +74,8 @@ public class Principal {
                 System.out.println("Não existe ficha com esse número!");
             }
         } while (opcao != 0);
+
+        sc.close();
     }
 
     public void exibirMenu() {
