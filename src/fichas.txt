@@ -1,0 +1,521 @@
+nome;sexo;classe;arma;magia;vida
+Aldric Dentebravo;M;GUERREIRO;Alabarda:8;;59
+Aldric Luzprata;M;LADINO;Adaga Gemea:6;;42
+Aldric Pelegris;M;MAGO;Cajado Arcano:4;Raio Congelante:10;31
+Aldric Sombravale;M;MAGO;Bastao Etereo:5;Seta Arcana:8;37
+Aldric Tremoco;M;LADINO;Besta de Mao:7;;51
+Aldric Vaupedra;M;MAGO;Adaga Ritual:3;Seta Arcana:8;27
+Aldric Ventolesto;M;LADINO;Besta de Mao:7;;39
+Anya Cravorrubro;F;MAGO;Bastao Etereo:5;Raio Congelante:10;31
+Anya Ostraval;F;LADINO;Adaga Gemea:6;;52
+Anya Pedraforte;F;LADINO;Punhal Sombrio:5;;38
+Anya Pelegris;F;CLERIGO;Maca Sagrada:6;Punicao Divina:11;52
+Anya Sombravale;F;MAGO;Varinha Runica:3;Tempestade Eletrica:14;30
+Aranha Gigante da Cripta;M;MONSTRO;Presa Venenosa:6;;69
+Aranha Gigante Esquecido;F;MONSTRO;Cauda Espinhosa:8;Grito Aterrador:8;30
+Aranha Gigante Petreo;M;MONSTRO;Presa Venenosa:6;Grito Aterrador:8;23
+Aranha Gigante Selvagem;M;MONSTRO;Tentaculo:5;Grito Aterrador:8;88
+Aranha Gigante Uivante;M;MONSTRO;Mandibula Brutal:9;Sopro Sombrio:10;50
+Aranha Gigante Vermelho;F;MONSTRO;Mandibula Brutal:9;;28
+Aranha Gigante Voraz;F;MONSTRO;Tentaculo:5;;41
+Astrid Folhaverde;F;LADINO;Arco Curto:6;;47
+Astrid Laminar;F;MAGO;Cajado Arcano:4;Seta Arcana:8;37
+Astrid Quebrantosso;F;MAGO;Bastao Etereo:5;Seta Arcana:8;30
+Astrid Riachoclaro;F;LADINO;Adaga Gemea:6;;51
+Astrid Vaupedra;F;MAGO;Varinha Runica:3;Tempestade Eletrica:14;26
+Baldric Aurivento;M;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;59
+Baldric Florsombria;M;CLERIGO;Maca Sagrada:6;Luz Curativa:9;53
+Baldric Luzprata;M;LADINO;Punhal Sombrio:5;;47
+Baldric Montelongo;M;LADINO;Punhal Sombrio:5;;54
+Baldric Noitefria;M;GUERREIRO;Montante:10;;61
+Baldric Ostraval;M;MAGO;Bastao Etereo:5;Raio Congelante:10;36
+Baldric Pelegris;M;MAGO;Cajado Arcano:4;Seta Arcana:8;28
+Baldric Riachoclaro;M;CLERIGO;Martelo da Fe:7;Luz Curativa:9;35
+Baldric Tremoco;M;CLERIGO;Maca Sagrada:6;Punicao Divina:11;41
+Baldric Urzevelha;M;MAGO;Adaga Ritual:3;Tempestade Eletrica:14;39
+Baldric Ventolesto;M;LADINO;Arco Curto:6;;53
+Basilisco da Cripta;M;MONSTRO;Garra Afiada:7;Grito Aterrador:8;90
+Basilisco das Cavernas;F;MONSTRO;Presa Venenosa:6;Sopro Sombrio:10;87
+Basilisco das Ruinas;M;MONSTRO;Mandibula Brutal:9;Grito Aterrador:8;60
+Basilisco do Pantano;F;MONSTRO;Presa Venenosa:6;;41
+Basilisco Errante;M;MONSTRO;Garra Afiada:7;Grito Aterrador:8;34
+Basilisco Faminto;F;MONSTRO;Mandibula Brutal:9;;61
+Basilisco Maldito;F;MONSTRO;Tentaculo:5;;32
+Basilisco Negro;M;MONSTRO;Cauda Espinhosa:8;Grito Aterrador:8;66
+Basilisco Sombrio;M;MONSTRO;Tentaculo:5;;73
+Bram Laminar;M;LADINO;Punhal Sombrio:5;;53
+Bram Noitefria;M;CLERIGO;Martelo da Fe:7;Punicao Divina:11;50
+Bram Ostraval;M;LADINO;Punhal Sombrio:5;;50
+Bram Tremoco;M;LADINO;Punhal Sombrio:5;;48
+Brielle Cravorrubro;F;LADINO;Arco Curto:6;;45
+Brielle Ferronegro;F;MAGO;Adaga Ritual:3;Tempestade Eletrica:14;27
+Brielle Ostraval;F;GUERREIRO;Montante:10;;47
+Brielle Riachoclaro;F;LADINO;Arco Curto:6;;49
+Brielle Solposto;F;CLERIGO;Cetro Bento:5;Luz Curativa:9;44
+Brielle Urzevelha;F;GUERREIRO;Espada Longa:7;;61
+Brielle Ventolesto;F;CLERIGO;Maca Sagrada:6;Luz Curativa:9;49
+Brunhilde Brumafria;F;CLERIGO;Maca Sagrada:6;Luz Curativa:9;38
+Brunhilde Folhaverde;F;LADINO;Arco Curto:6;;46
+Brunhilde Ostraval;F;CLERIGO;Martelo da Fe:7;Punicao Divina:11;58
+Brunhilde Pedraforte;F;LADINO;Besta de Mao:7;;50
+Brunhilde Vaupedra;F;GUERREIRO;Alabarda:8;;50
+Brunhilde Ventolesto;F;MAGO;Adaga Ritual:3;Tempestade Eletrica:14;27
+Cassia Cravorrubro;F;MAGO;Cajado Arcano:4;Tempestade Eletrica:14;36
+Cassia Espinhal;F;GUERREIRO;Alabarda:8;;46
+Cassia Florsombria;F;LADINO;Arco Curto:6;;44
+Cassia Luzprata;F;MAGO;Adaga Ritual:3;Seta Arcana:8;33
+Cassia Noitefria;F;CLERIGO;Maca Sagrada:6;Luz Curativa:9;42
+Cassia Pedraforte;F;GUERREIRO;Martelo Pesado:9;;70
+Cassia Quebrantosso;F;LADINO;Adaga Gemea:6;;51
+Cassia Tremoco;F;CLERIGO;Maca Sagrada:6;Luz Curativa:9;55
+Cedric Espinhal;M;GUERREIRO;Montante:10;;62
+Cedric Ferronegro;M;LADINO;Arco Curto:6;;39
+Cedric Gelocorvo;M;MAGO;Varinha Runica:3;Raio Congelante:10;27
+Cedric Laminar;M;GUERREIRO;Espada Longa:7;;58
+Cedric Luzprata;M;LADINO;Arco Curto:6;;40
+Cedric Ostraval;M;MAGO;Bastao Etereo:5;Tempestade Eletrica:14;27
+Celeste Espinhal;F;LADINO;Punhal Sombrio:5;;53
+Celeste Folhaverde;F;MAGO;Bastao Etereo:5;Bola de Fogo:12;40
+Celeste Laminar;F;GUERREIRO;Martelo Pesado:9;;61
+Celeste Montelongo;F;MAGO;Bastao Etereo:5;Seta Arcana:8;35
+Celeste Noitefria;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;42
+Celeste Pelegris;F;LADINO;Adaga Gemea:6;;38
+Celeste Quebrantosso;F;GUERREIRO;Espada Longa:7;;54
+Celeste Tremoco;F;CLERIGO;Martelo da Fe:7;Punicao Divina:11;36
+Celeste Urzevelha;F;LADINO;Adaga Gemea:6;;35
+Daria Ferronegro;F;LADINO;Arco Curto:6;;49
+Daria Laminar;F;LADINO;Punhal Sombrio:5;;47
+Daria Luzprata;F;CLERIGO;Maca Sagrada:6;Punicao Divina:11;42
+Daria Riachoclaro;F;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;49
+Daria Solposto;F;LADINO;Besta de Mao:7;;43
+Daria Vaupedra;F;MAGO;Bastao Etereo:5;Seta Arcana:8;35
+Davor Aurivento;M;LADINO;Besta de Mao:7;;41
+Davor Brumafria;M;MAGO;Cajado Arcano:4;Bola de Fogo:12;29
+Davor Cravorrubro;M;LADINO;Arco Curto:6;;37
+Davor Dentebravo;M;CLERIGO;Cetro Bento:5;Punicao Divina:11;45
+Davor Gelocorvo;M;CLERIGO;Cetro Bento:5;Escudo da Fe:7;39
+Davor Pelegris;M;MAGO;Adaga Ritual:3;Tempestade Eletrica:14;26
+Davor Urzevelha;M;MAGO;Varinha Runica:3;Tempestade Eletrica:14;37
+Davor Vaupedra;M;CLERIGO;Cetro Bento:5;Escudo da Fe:7;60
+Davor Ventolesto;M;LADINO;Arco Curto:6;;48
+Delia Folhaverde;F;LADINO;Punhal Sombrio:5;;48
+Delia Noitefria;F;LADINO;Adaga Gemea:6;;44
+Delia Ostraval;F;GUERREIRO;Martelo Pesado:9;;69
+Delia Riachoclaro;F;MAGO;Bastao Etereo:5;Bola de Fogo:12;32
+Delia Solposto;F;GUERREIRO;Espada Longa:7;;53
+Delia Sombravale;F;LADINO;Besta de Mao:7;;53
+Delia Tremoco;F;MAGO;Bastao Etereo:5;Seta Arcana:8;27
+Doran Dentebravo;M;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;41
+Doran Florsombria;M;GUERREIRO;Alabarda:8;;53
+Doran Gelocorvo;M;CLERIGO;Martelo da Fe:7;Luz Curativa:9;47
+Doran Laminar;M;CLERIGO;Martelo da Fe:7;Punicao Divina:11;41
+Doran Luzprata;M;CLERIGO;Maca Sagrada:6;Luz Curativa:9;58
+Doran Ostraval;M;GUERREIRO;Espada Longa:7;;45
+Doran Vaupedra;M;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;59
+Edrik Aurivento;M;MAGO;Cajado Arcano:4;Seta Arcana:8;38
+Edrik Florsombria;M;MAGO;Adaga Ritual:3;Bola de Fogo:12;35
+Edrik Folhaverde;M;CLERIGO;Cetro Bento:5;Punicao Divina:11;59
+Edrik Gelocorvo;M;CLERIGO;Maca Sagrada:6;Punicao Divina:11;46
+Edrik Luzprata;M;LADINO;Besta de Mao:7;;45
+Edrik Montelongo;M;MAGO;Cajado Arcano:4;Bola de Fogo:12;30
+Edrik Ostraval;M;LADINO;Adaga Gemea:6;;48
+Edrik Pedraforte;M;LADINO;Besta de Mao:7;;47
+Edrik Pelegris;M;MAGO;Varinha Runica:3;Seta Arcana:8;26
+Edrik Sombravale;M;GUERREIRO;Alabarda:8;;56
+Edrik Tremoco;M;GUERREIRO;Espada Longa:7;;45
+Elowen Aurivento;F;GUERREIRO;Alabarda:8;;48
+Elowen Florsombria;F;GUERREIRO;Alabarda:8;;45
+Elowen Gelocorvo;F;MAGO;Bastao Etereo:5;Seta Arcana:8;28
+Elowen Noitefria;F;CLERIGO;Maca Sagrada:6;Punicao Divina:11;39
+Elowen Pelegris;F;GUERREIRO;Machado de Guerra:8;;62
+Elowen Solposto;F;MAGO;Cajado Arcano:4;Bola de Fogo:12;35
+Espectro da Cripta;M;MONSTRO;Cauda Espinhosa:8;Sopro Sombrio:10;85
+Espectro das Cavernas;M;MONSTRO;Mandibula Brutal:9;;69
+Espectro das Ruinas;F;MONSTRO;Garra Afiada:7;Grito Aterrador:8;76
+Espectro Uivante;F;MONSTRO;Tentaculo:5;;74
+Esqueleto Anciao;F;MONSTRO;Presa Venenosa:6;;73
+Esqueleto das Cavernas;M;MONSTRO;Presa Venenosa:6;Grito Aterrador:8;67
+Esqueleto das Ruinas;F;MONSTRO;Cauda Espinhosa:8;Sopro Sombrio:10;38
+Esqueleto Uivante;F;MONSTRO;Garra Afiada:7;Veneno Corrosivo:9;70
+Esqueleto Vermelho;F;MONSTRO;Garra Afiada:7;;62
+Esqueleto Voraz;M;MONSTRO;Tentaculo:5;;43
+Evelina Aurivento;F;LADINO;Arco Curto:6;;49
+Evelina Brumafria;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;55
+Evelina Cinzarubra;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;42
+Evelina Espinhal;F;GUERREIRO;Martelo Pesado:9;;62
+Evelina Ferronegro;F;GUERREIRO;Espada Longa:7;;60
+Evelina Florsombria;F;MAGO;Bastao Etereo:5;Seta Arcana:8;40
+Evelina Folhaverde;F;MAGO;Cajado Arcano:4;Bola de Fogo:12;32
+Evelina Laminar;F;LADINO;Adaga Gemea:6;;40
+Evelina Luzprata;F;CLERIGO;Maca Sagrada:6;Luz Curativa:9;38
+Evelina Montelongo;F;CLERIGO;Maca Sagrada:6;Luz Curativa:9;38
+Evelina Pelegris;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;56
+Evelina Urzevelha;F;LADINO;Punhal Sombrio:5;;42
+Falken Cravorrubro;M;CLERIGO;Maca Sagrada:6;Luz Curativa:9;39
+Falken Luzprata;M;CLERIGO;Martelo da Fe:7;Punicao Divina:11;49
+Falken Montelongo;M;LADINO;Arco Curto:6;;36
+Falken Noitefria;M;CLERIGO;Cetro Bento:5;Luz Curativa:9;36
+Falken Ostraval;M;GUERREIRO;Alabarda:8;;63
+Falken Quebrantosso;M;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;52
+Falken Solposto;M;LADINO;Adaga Gemea:6;;40
+Falken Sombravale;M;MAGO;Adaga Ritual:3;Bola de Fogo:12;32
+Falken Tremoco;M;GUERREIRO;Martelo Pesado:9;;62
+Falken Ventolesto;M;LADINO;Besta de Mao:7;;55
+Feyn Folhaverde;M;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;53
+Feyn Gelocorvo;M;CLERIGO;Cetro Bento:5;Escudo da Fe:7;40
+Feyn Ostraval;M;CLERIGO;Maca Sagrada:6;Punicao Divina:11;40
+Freya Folhaverde;F;GUERREIRO;Martelo Pesado:9;;58
+Freya Noitefria;F;CLERIGO;Martelo da Fe:7;Luz Curativa:9;54
+Freya Sombravale;F;LADINO;Punhal Sombrio:5;;55
+Freya Ventolesto;F;LADINO;Arco Curto:6;;49
+Garen Quebrantosso;M;MAGO;Varinha Runica:3;Bola de Fogo:12;32
+Gargula Anciao;M;MONSTRO;Cauda Espinhosa:8;;79
+Gargula das Cavernas;F;MONSTRO;Cauda Espinhosa:8;Veneno Corrosivo:9;73
+Gargula do Pantano;M;MONSTRO;Garra Afiada:7;;72
+Gargula Petreo;M;MONSTRO;Mandibula Brutal:9;Grito Aterrador:8;84
+Ghoul Anciao;F;MONSTRO;Garra Afiada:7;;34
+Ghoul Colossal;F;MONSTRO;Tentaculo:5;Veneno Corrosivo:9;48
+Ghoul da Floresta;F;MONSTRO;Cauda Espinhosa:8;;31
+Ghoul das Cavernas;F;MONSTRO;Garra Afiada:7;;68
+Ghoul do Pantano;F;MONSTRO;Mandibula Brutal:9;Veneno Corrosivo:9;90
+Ghoul Errante;F;MONSTRO;Presa Venenosa:6;Veneno Corrosivo:9;30
+Ghoul Faminto;M;MONSTRO;Presa Venenosa:6;Grito Aterrador:8;77
+Ghoul Maldito;F;MONSTRO;Mandibula Brutal:9;;86
+Ghoul Negro;F;MONSTRO;Cauda Espinhosa:8;;84
+Ghoul Petreo;M;MONSTRO;Mandibula Brutal:9;;29
+Ghoul Selvagem;M;MONSTRO;Mandibula Brutal:9;;76
+Ghoul Venenoso;F;MONSTRO;Tentaculo:5;Veneno Corrosivo:9;58
+Ghoul Voraz;M;MONSTRO;Presa Venenosa:6;Veneno Corrosivo:9;50
+Gideon Cinzarubra;M;CLERIGO;Cetro Bento:5;Luz Curativa:9;47
+Gideon Florsombria;M;LADINO;Punhal Sombrio:5;;35
+Gideon Laminar;M;LADINO;Besta de Mao:7;;38
+Gideon Solposto;M;LADINO;Arco Curto:6;;37
+Gideon Tremoco;M;GUERREIRO;Machado de Guerra:8;;69
+Goblin Anciao;F;MONSTRO;Cauda Espinhosa:8;;53
+Goblin das Ruinas;M;MONSTRO;Presa Venenosa:6;;51
+Goblin Selvagem;M;MONSTRO;Cauda Espinhosa:8;;28
+Goblin Sombrio;M;MONSTRO;Mandibula Brutal:9;Grito Aterrador:8;45
+Goblin Uivante;F;MONSTRO;Garra Afiada:7;Veneno Corrosivo:9;45
+Goblin Voraz;M;MONSTRO;Garra Afiada:7;Sopro Sombrio:10;27
+Gwendolyn Aurivento;F;MAGO;Cajado Arcano:4;Raio Congelante:10;37
+Gwendolyn Brumafria;F;MAGO;Cajado Arcano:4;Raio Congelante:10;35
+Gwendolyn Gelocorvo;F;CLERIGO;Maca Sagrada:6;Luz Curativa:9;44
+Gwendolyn Pedraforte;F;MAGO;Varinha Runica:3;Bola de Fogo:12;40
+Gwendolyn Pelegris;F;GUERREIRO;Montante:10;;68
+Hadrian Aurivento;M;LADINO;Adaga Gemea:6;;42
+Hadrian Dentebravo;M;MAGO;Adaga Ritual:3;Raio Congelante:10;30
+Hadrian Montelongo;M;GUERREIRO;Machado de Guerra:8;;47
+Hadrian Vaupedra;M;MAGO;Cajado Arcano:4;Raio Congelante:10;38
+Harpia Anciao;M;MONSTRO;Mandibula Brutal:9;;90
+Harpia da Cripta;F;MONSTRO;Garra Afiada:7;;26
+Harpia do Norte;F;MONSTRO;Tentaculo:5;;78
+Harpia do Pantano;M;MONSTRO;Cauda Espinhosa:8;;24
+Harpia Faminto;F;MONSTRO;Presa Venenosa:6;Veneno Corrosivo:9;51
+Harpia Petreo;F;MONSTRO;Tentaculo:5;;25
+Helena Aurivento;F;GUERREIRO;Martelo Pesado:9;;59
+Helena Brumafria;F;MAGO;Varinha Runica:3;Seta Arcana:8;28
+Helena Cinzarubra;F;GUERREIRO;Martelo Pesado:9;;60
+Helena Dentebravo;F;GUERREIRO;Espada Longa:7;;55
+Helena Gelocorvo;F;MAGO;Adaga Ritual:3;Raio Congelante:10;38
+Helena Ostraval;F;GUERREIRO;Espada Longa:7;;49
+Helena Solposto;F;CLERIGO;Cetro Bento:5;Luz Curativa:9;49
+Helena Urzevelha;F;CLERIGO;Maca Sagrada:6;Luz Curativa:9;39
+Isolde Dentebravo;F;CLERIGO;Martelo da Fe:7;Punicao Divina:11;41
+Isolde Ferronegro;F;MAGO;Varinha Runica:3;Tempestade Eletrica:14;32
+Isolde Folhaverde;F;LADINO;Adaga Gemea:6;;54
+Isolde Gelocorvo;F;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;36
+Isolde Noitefria;F;MAGO;Cajado Arcano:4;Raio Congelante:10;39
+Isolde Quebrantosso;F;MAGO;Varinha Runica:3;Raio Congelante:10;40
+Isolde Urzevelha;F;LADINO;Besta de Mao:7;;54
+Ivar Cinzarubra;M;LADINO;Adaga Gemea:6;;52
+Ivar Cravorrubro;M;CLERIGO;Cetro Bento:5;Escudo da Fe:7;46
+Ivar Luzprata;M;LADINO;Besta de Mao:7;;35
+Ivar Montelongo;M;CLERIGO;Martelo da Fe:7;Luz Curativa:9;37
+Ivar Quebrantosso;M;MAGO;Adaga Ritual:3;Raio Congelante:10;35
+Ivar Tremoco;M;CLERIGO;Martelo da Fe:7;Punicao Divina:11;42
+Jessamine Laminar;F;LADINO;Punhal Sombrio:5;;43
+Jessamine Ostraval;F;GUERREIRO;Martelo Pesado:9;;54
+Jessamine Sombravale;F;MAGO;Bastao Etereo:5;Bola de Fogo:12;30
+Jorah Ferronegro;M;GUERREIRO;Montante:10;;58
+Jorah Ostraval;M;GUERREIRO;Martelo Pesado:9;;52
+Kael Aurivento;M;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;51
+Kael Brumafria;M;CLERIGO;Cetro Bento:5;Escudo da Fe:7;54
+Kael Cravorrubro;M;LADINO;Adaga Gemea:6;;46
+Kael Ferronegro;M;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;50
+Kael Florsombria;M;LADINO;Adaga Gemea:6;;42
+Kael Montelongo;M;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;38
+Kael Pelegris;M;GUERREIRO;Martelo Pesado:9;;46
+Kael Riachoclaro;M;GUERREIRO;Machado de Guerra:8;;69
+Kael Ventolesto;M;LADINO;Besta de Mao:7;;38
+Katriel Florsombria;F;CLERIGO;Martelo da Fe:7;Punicao Divina:11;40
+Katriel Luzprata;F;LADINO;Besta de Mao:7;;40
+Katriel Urzevelha;F;LADINO;Punhal Sombrio:5;;49
+Katriel Ventolesto;F;MAGO;Adaga Ritual:3;Tempestade Eletrica:14;25
+Kestrel Aurivento;M;GUERREIRO;Montante:10;;59
+Kestrel Florsombria;M;GUERREIRO;Montante:10;;59
+Kestrel Folhaverde;M;MAGO;Bastao Etereo:5;Bola de Fogo:12;30
+Kestrel Laminar;M;CLERIGO;Martelo da Fe:7;Luz Curativa:9;50
+Kestrel Luzprata;M;CLERIGO;Martelo da Fe:7;Punicao Divina:11;49
+Kestrel Noitefria;M;CLERIGO;Martelo da Fe:7;Punicao Divina:11;44
+Kestrel Pelegris;M;LADINO;Arco Curto:6;;36
+Kestrel Riachoclaro;M;GUERREIRO;Machado de Guerra:8;;52
+Kestrel Vaupedra;M;MAGO;Adaga Ritual:3;Tempestade Eletrica:14;33
+Kobold da Cripta;M;MONSTRO;Mandibula Brutal:9;;55
+Kobold das Cavernas;F;MONSTRO;Presa Venenosa:6;Grito Aterrador:8;51
+Kobold Esquecido;M;MONSTRO;Cauda Espinhosa:8;;82
+Kobold Faminto;F;MONSTRO;Garra Afiada:7;Sopro Sombrio:10;50
+Kobold Petreo;M;MONSTRO;Mandibula Brutal:9;Veneno Corrosivo:9;51
+Kobold Venenoso;M;MONSTRO;Tentaculo:5;Grito Aterrador:8;47
+Kobold Vermelho;M;MONSTRO;Cauda Espinhosa:8;Grito Aterrador:8;26
+Kobold Voraz;F;MONSTRO;Tentaculo:5;;34
+Lich Colossal;F;MONSTRO;Tentaculo:5;Grito Aterrador:8;88
+Lich das Ruinas;F;MONSTRO;Tentaculo:5;Veneno Corrosivo:9;65
+Lich do Norte;F;MONSTRO;Garra Afiada:7;Grito Aterrador:8;35
+Lich Negro;F;MONSTRO;Garra Afiada:7;Veneno Corrosivo:9;78
+Lich Sombrio;M;MONSTRO;Presa Venenosa:6;Veneno Corrosivo:9;80
+Lich Voraz;M;MONSTRO;Tentaculo:5;;83
+Liora Aurivento;F;GUERREIRO;Alabarda:8;;70
+Liora Brumafria;F;MAGO;Bastao Etereo:5;Tempestade Eletrica:14;32
+Liora Cinzarubra;F;LADINO;Arco Curto:6;;39
+Liora Dentebravo;F;GUERREIRO;Machado de Guerra:8;;59
+Liora Noitefria;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;38
+Liora Ostraval;F;MAGO;Cajado Arcano:4;Bola de Fogo:12;34
+Liora Pelegris;F;GUERREIRO;Montante:10;;59
+Liora Quebrantosso;F;GUERREIRO;Machado de Guerra:8;;45
+Liora Solposto;F;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;49
+Liora Sombravale;F;LADINO;Arco Curto:6;;43
+Liora Tremoco;F;CLERIGO;Martelo da Fe:7;Luz Curativa:9;42
+Liora Vaupedra;F;LADINO;Besta de Mao:7;;51
+Lobo Atroz das Ruinas;M;MONSTRO;Presa Venenosa:6;;70
+Lobo Atroz do Norte;M;MONSTRO;Mandibula Brutal:9;Grito Aterrador:8;56
+Lobo Atroz Errante;F;MONSTRO;Mandibula Brutal:9;Sopro Sombrio:10;66
+Lobo Atroz Esquecido;M;MONSTRO;Tentaculo:5;;71
+Lobo Atroz Petreo;M;MONSTRO;Mandibula Brutal:9;Sopro Sombrio:10;60
+Lobo Atroz Venenoso;M;MONSTRO;Cauda Espinhosa:8;;35
+Lobo Atroz Vermelho;F;MONSTRO;Cauda Espinhosa:8;Sopro Sombrio:10;28
+Lobo Atroz Voraz;F;MONSTRO;Garra Afiada:7;;57
+Lothar Dentebravo;M;CLERIGO;Martelo da Fe:7;Luz Curativa:9;41
+Lothar Espinhal;M;MAGO;Cajado Arcano:4;Raio Congelante:10;29
+Lothar Folhaverde;M;GUERREIRO;Martelo Pesado:9;;54
+Lothar Montelongo;M;GUERREIRO;Martelo Pesado:9;;62
+Lyra Brumafria;F;GUERREIRO;Alabarda:8;;56
+Lyra Ferronegro;F;LADINO;Punhal Sombrio:5;;42
+Lyra Gelocorvo;F;CLERIGO;Maca Sagrada:6;Punicao Divina:11;46
+Lyra Pelegris;F;GUERREIRO;Montante:10;;68
+Lyra Quebrantosso;F;LADINO;Arco Curto:6;;55
+Magnus Montelongo;M;GUERREIRO;Montante:10;;63
+Magnus Pedraforte;M;MAGO;Varinha Runica:3;Raio Congelante:10;40
+Magnus Sombravale;M;CLERIGO;Martelo da Fe:7;Luz Curativa:9;53
+Magnus Tremoco;M;MAGO;Adaga Ritual:3;Bola de Fogo:12;38
+Marek Ferronegro;M;MAGO;Bastao Etereo:5;Raio Congelante:10;30
+Marek Florsombria;M;GUERREIRO;Machado de Guerra:8;;51
+Marek Folhaverde;M;GUERREIRO;Machado de Guerra:8;;64
+Marek Luzprata;M;MAGO;Cajado Arcano:4;Seta Arcana:8;28
+Marek Ostraval;M;MAGO;Adaga Ritual:3;Tempestade Eletrica:14;36
+Marek Pelegris;M;GUERREIRO;Machado de Guerra:8;;68
+Marek Solposto;M;GUERREIRO;Martelo Pesado:9;;63
+Marek Sombravale;M;GUERREIRO;Martelo Pesado:9;;47
+Mimico Colossal;M;MONSTRO;Mandibula Brutal:9;;81
+Mimico da Cripta;M;MONSTRO;Garra Afiada:7;Sopro Sombrio:10;36
+Mimico da Floresta;F;MONSTRO;Presa Venenosa:6;Sopro Sombrio:10;48
+Mimico das Cavernas;M;MONSTRO;Tentaculo:5;;88
+Mimico Faminto;M;MONSTRO;Cauda Espinhosa:8;;29
+Mimico Negro;M;MONSTRO;Cauda Espinhosa:8;Veneno Corrosivo:9;39
+Mimico Petreo;F;MONSTRO;Garra Afiada:7;Grito Aterrador:8;37
+Mimico Selvagem;M;MONSTRO;Tentaculo:5;;68
+Mimico Venenoso;F;MONSTRO;Garra Afiada:7;;84
+Mimico Vermelho;F;MONSTRO;Garra Afiada:7;Sopro Sombrio:10;33
+Minotauro Anciao;F;MONSTRO;Cauda Espinhosa:8;Sopro Sombrio:10;53
+Minotauro das Cavernas;F;MONSTRO;Presa Venenosa:6;Grito Aterrador:8;28
+Minotauro Maldito;M;MONSTRO;Mandibula Brutal:9;Sopro Sombrio:10;49
+Minotauro Negro;M;MONSTRO;Tentaculo:5;;27
+Minotauro Petreo;F;MONSTRO;Garra Afiada:7;Grito Aterrador:8;90
+Minotauro Venenoso;M;MONSTRO;Mandibula Brutal:9;Grito Aterrador:8;35
+Morgana Aurivento;F;CLERIGO;Cetro Bento:5;Luz Curativa:9;47
+Morgana Espinhal;F;LADINO;Punhal Sombrio:5;;38
+Morgana Pedraforte;F;LADINO;Punhal Sombrio:5;;47
+Morgana Quebrantosso;F;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;35
+Morgana Riachoclaro;F;MAGO;Bastao Etereo:5;Seta Arcana:8;34
+Naga Colossal;F;MONSTRO;Mandibula Brutal:9;Veneno Corrosivo:9;37
+Naga da Cripta;M;MONSTRO;Presa Venenosa:6;;65
+Naga do Norte;M;MONSTRO;Cauda Espinhosa:8;Grito Aterrador:8;87
+Naga do Pantano;F;MONSTRO;Presa Venenosa:6;Veneno Corrosivo:9;37
+Naga Esquecido;F;MONSTRO;Cauda Espinhosa:8;Grito Aterrador:8;77
+Naga Vermelho;F;MONSTRO;Mandibula Brutal:9;Veneno Corrosivo:9;88
+Naga Voraz;M;MONSTRO;Presa Venenosa:6;Sopro Sombrio:10;59
+Nimue Espinhal;F;MAGO;Adaga Ritual:3;Bola de Fogo:12;36
+Nimue Ferronegro;F;GUERREIRO;Alabarda:8;;59
+Nimue Luzprata;F;MAGO;Cajado Arcano:4;Bola de Fogo:12;34
+Nimue Montelongo;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;50
+Nimue Noitefria;F;LADINO;Arco Curto:6;;43
+Nimue Ostraval;F;GUERREIRO;Martelo Pesado:9;;52
+Nimue Pelegris;F;GUERREIRO;Alabarda:8;;61
+Nimue Quebrantosso;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;59
+Nolan Cinzarubra;M;MAGO;Adaga Ritual:3;Bola de Fogo:12;30
+Nolan Riachoclaro;M;LADINO;Punhal Sombrio:5;;38
+Nolan Sombravale;M;MAGO;Varinha Runica:3;Tempestade Eletrica:14;31
+Ogro Colossal;M;MONSTRO;Presa Venenosa:6;;75
+Ogro da Cripta;M;MONSTRO;Cauda Espinhosa:8;Veneno Corrosivo:9;39
+Ogro do Pantano;F;MONSTRO;Cauda Espinhosa:8;Sopro Sombrio:10;42
+Ogro Petreo;F;MONSTRO;Garra Afiada:7;;58
+Ogro Sombrio;F;MONSTRO;Garra Afiada:7;;37
+Ogro Uivante;M;MONSTRO;Garra Afiada:7;;21
+Ophelia Dentebravo;F;MAGO;Adaga Ritual:3;Tempestade Eletrica:14;30
+Ophelia Ferronegro;F;GUERREIRO;Martelo Pesado:9;;47
+Ophelia Florsombria;F;MAGO;Varinha Runica:3;Tempestade Eletrica:14;36
+Ophelia Pedraforte;F;GUERREIRO;Machado de Guerra:8;;67
+Ophelia Urzevelha;F;MAGO;Adaga Ritual:3;Raio Congelante:10;33
+Orc das Cavernas;M;MONSTRO;Tentaculo:5;;38
+Orc do Norte;F;MONSTRO;Cauda Espinhosa:8;;42
+Orc Petreo;F;MONSTRO;Presa Venenosa:6;Grito Aterrador:8;60
+Orc Sombrio;F;MONSTRO;Presa Venenosa:6;;63
+Osric Aurivento;M;LADINO;Punhal Sombrio:5;;40
+Osric Ferronegro;M;MAGO;Bastao Etereo:5;Seta Arcana:8;31
+Osric Gelocorvo;M;LADINO;Punhal Sombrio:5;;35
+Osric Vaupedra;M;LADINO;Punhal Sombrio:5;;55
+Osric Ventolesto;M;MAGO;Varinha Runica:3;Bola de Fogo:12;27
+Percival Brumafria;M;MAGO;Cajado Arcano:4;Bola de Fogo:12;30
+Percival Cinzarubra;M;CLERIGO;Maca Sagrada:6;Luz Curativa:9;47
+Percival Montelongo;M;GUERREIRO;Martelo Pesado:9;;58
+Percival Quebrantosso;M;MAGO;Cajado Arcano:4;Seta Arcana:8;38
+Percival Vaupedra;M;GUERREIRO;Montante:10;;52
+Quimera Colossal;M;MONSTRO;Garra Afiada:7;;64
+Quimera da Cripta;F;MONSTRO;Garra Afiada:7;;34
+Quimera da Floresta;F;MONSTRO;Presa Venenosa:6;Sopro Sombrio:10;37
+Quimera Errante;M;MONSTRO;Garra Afiada:7;Sopro Sombrio:10;85
+Quimera Maldito;F;MONSTRO;Presa Venenosa:6;;75
+Roderic Florsombria;M;MAGO;Adaga Ritual:3;Seta Arcana:8;35
+Roderic Folhaverde;M;GUERREIRO;Machado de Guerra:8;;70
+Roderic Laminar;M;MAGO;Adaga Ritual:3;Bola de Fogo:12;32
+Roderic Luzprata;M;MAGO;Bastao Etereo:5;Tempestade Eletrica:14;37
+Roderic Riachoclaro;M;LADINO;Arco Curto:6;;36
+Roderic Solposto;M;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;39
+Rowena Aurivento;F;CLERIGO;Cetro Bento:5;Escudo da Fe:7;54
+Rowena Cravorrubro;F;LADINO;Adaga Gemea:6;;47
+Rowena Dentebravo;F;CLERIGO;Cetro Bento:5;Escudo da Fe:7;44
+Rowena Florsombria;F;LADINO;Adaga Gemea:6;;42
+Rowena Quebrantosso;F;GUERREIRO;Martelo Pesado:9;;54
+Rowena Solposto;F;MAGO;Varinha Runica:3;Tempestade Eletrica:14;38
+Rowena Urzevelha;F;MAGO;Adaga Ritual:3;Bola de Fogo:12;40
+Seraphina Florsombria;F;LADINO;Arco Curto:6;;38
+Seraphina Folhaverde;F;LADINO;Besta de Mao:7;;55
+Seraphina Luzprata;F;LADINO;Adaga Gemea:6;;49
+Seraphina Pelegris;F;LADINO;Arco Curto:6;;37
+Seraphina Ventolesto;F;LADINO;Punhal Sombrio:5;;37
+Slime Colossal;M;MONSTRO;Presa Venenosa:6;Veneno Corrosivo:9;29
+Slime da Floresta;F;MONSTRO;Garra Afiada:7;Veneno Corrosivo:9;41
+Slime das Cavernas;F;MONSTRO;Mandibula Brutal:9;Sopro Sombrio:10;43
+Slime do Norte;F;MONSTRO;Tentaculo:5;;75
+Slime do Pantano;M;MONSTRO;Presa Venenosa:6;Grito Aterrador:8;62
+Slime Faminto;F;MONSTRO;Cauda Espinhosa:8;Veneno Corrosivo:9;36
+Slime Uivante;F;MONSTRO;Tentaculo:5;Grito Aterrador:8;34
+Slime Venenoso;F;MONSTRO;Garra Afiada:7;Veneno Corrosivo:9;77
+Soren Espinhal;M;LADINO;Besta de Mao:7;;39
+Soren Florsombria;M;CLERIGO;Maca Sagrada:6;Luz Curativa:9;45
+Soren Noitefria;M;LADINO;Adaga Gemea:6;;42
+Soren Pedraforte;M;MAGO;Bastao Etereo:5;Bola de Fogo:12;26
+Soren Solposto;M;CLERIGO;Cetro Bento:5;Escudo da Fe:7;44
+Soren Tremoco;M;GUERREIRO;Martelo Pesado:9;;59
+Soren Vaupedra;M;LADINO;Arco Curto:6;;50
+Sybil Dentebravo;F;GUERREIRO;Martelo Pesado:9;;61
+Sybil Gelocorvo;F;LADINO;Adaga Gemea:6;;37
+Sybil Laminar;F;LADINO;Adaga Gemea:6;;38
+Sybil Luzprata;F;LADINO;Punhal Sombrio:5;;46
+Sybil Montelongo;F;MAGO;Varinha Runica:3;Seta Arcana:8;34
+Sybil Ostraval;F;CLERIGO;Martelo da Fe:7;Punicao Divina:11;58
+Sybil Riachoclaro;F;GUERREIRO;Alabarda:8;;65
+Sybil Solposto;F;MAGO;Adaga Ritual:3;Raio Congelante:10;32
+Sybil Urzevelha;F;LADINO;Besta de Mao:7;;38
+Sybil Vaupedra;F;GUERREIRO;Alabarda:8;;58
+Talia Brumafria;F;CLERIGO;Martelo da Fe:7;Escudo da Fe:7;35
+Talia Cravorrubro;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;47
+Talia Dentebravo;F;MAGO;Cajado Arcano:4;Tempestade Eletrica:14;36
+Talia Gelocorvo;F;LADINO;Besta de Mao:7;;44
+Talia Ostraval;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;49
+Talia Solposto;F;CLERIGO;Cetro Bento:5;Punicao Divina:11;57
+Talia Sombravale;F;LADINO;Besta de Mao:7;;45
+Thorin Dentebravo;M;GUERREIRO;Martelo Pesado:9;;70
+Thorin Montelongo;M;CLERIGO;Maca Sagrada:6;Luz Curativa:9;47
+Thorin Sombravale;M;MAGO;Varinha Runica:3;Bola de Fogo:12;31
+Thorin Urzevelha;M;LADINO;Arco Curto:6;;42
+Troll Anciao;F;MONSTRO;Tentaculo:5;Grito Aterrador:8;38
+Troll do Norte;F;MONSTRO;Mandibula Brutal:9;;58
+Troll Esquecido;F;MONSTRO;Mandibula Brutal:9;Grito Aterrador:8;69
+Troll Maldito;M;MONSTRO;Tentaculo:5;Grito Aterrador:8;89
+Troll Petreo;M;MONSTRO;Tentaculo:5;;68
+Troll Uivante;M;MONSTRO;Tentaculo:5;;76
+Troll Venenoso;M;MONSTRO;Garra Afiada:7;Grito Aterrador:8;49
+Troll Voraz;F;MONSTRO;Garra Afiada:7;Sopro Sombrio:10;45
+Ulric Cinzarubra;M;CLERIGO;Cetro Bento:5;Punicao Divina:11;37
+Ulric Gelocorvo;M;LADINO;Punhal Sombrio:5;;46
+Ulric Pedraforte;M;MAGO;Varinha Runica:3;Bola de Fogo:12;27
+Ulric Riachoclaro;M;GUERREIRO;Alabarda:8;;56
+Ulric Solposto;M;LADINO;Punhal Sombrio:5;;49
+Ulric Sombravale;M;MAGO;Bastao Etereo:5;Seta Arcana:8;37
+Ulric Vaupedra;M;MAGO;Cajado Arcano:4;Seta Arcana:8;29
+Una Folhaverde;F;CLERIGO;Cetro Bento:5;Luz Curativa:9;56
+Una Gelocorvo;F;LADINO;Besta de Mao:7;;44
+Una Ostraval;F;LADINO;Adaga Gemea:6;;38
+Una Pelegris;F;LADINO;Punhal Sombrio:5;;41
+Una Quebrantosso;F;GUERREIRO;Martelo Pesado:9;;47
+Una Urzevelha;F;MAGO;Adaga Ritual:3;Seta Arcana:8;39
+Una Vaupedra;F;MAGO;Cajado Arcano:4;Bola de Fogo:12;34
+Varek Aurivento;M;LADINO;Adaga Gemea:6;;40
+Varek Cravorrubro;M;MAGO;Varinha Runica:3;Seta Arcana:8;40
+Varek Espinhal;M;LADINO;Besta de Mao:7;;48
+Varek Noitefria;M;GUERREIRO;Martelo Pesado:9;;59
+Varek Ostraval;M;CLERIGO;Cetro Bento:5;Punicao Divina:11;37
+Varek Vaupedra;M;CLERIGO;Cetro Bento:5;Escudo da Fe:7;39
+Vesper Cinzarubra;F;GUERREIRO;Martelo Pesado:9;;70
+Vesper Cravorrubro;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;42
+Vesper Florsombria;F;CLERIGO;Cetro Bento:5;Escudo da Fe:7;39
+Vesper Laminar;F;GUERREIRO;Machado de Guerra:8;;55
+Vesper Luzprata;F;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;51
+Vesper Montelongo;F;LADINO;Besta de Mao:7;;52
+Vesper Riachoclaro;F;CLERIGO;Martelo da Fe:7;Luz Curativa:9;47
+Vesper Sombravale;F;LADINO;Punhal Sombrio:5;;40
+Vesper Urzevelha;F;CLERIGO;Cetro Bento:5;Punicao Divina:11;59
+Vesper Vaupedra;F;LADINO;Punhal Sombrio:5;;46
+Wendel Brumafria;M;CLERIGO;Cetro Bento:5;Punicao Divina:11;40
+Wendel Espinhal;M;LADINO;Punhal Sombrio:5;;39
+Wendel Ferronegro;M;LADINO;Punhal Sombrio:5;;54
+Wendel Laminar;M;MAGO;Varinha Runica:3;Bola de Fogo:12;29
+Wendel Montelongo;M;GUERREIRO;Espada Longa:7;;57
+Wendel Pelegris;M;MAGO;Bastao Etereo:5;Bola de Fogo:12;38
+Wendel Tremoco;M;MAGO;Varinha Runica:3;Bola de Fogo:12;38
+Wren Montelongo;F;MAGO;Varinha Runica:3;Seta Arcana:8;33
+Wren Pedraforte;F;CLERIGO;Martelo da Fe:7;Luz Curativa:9;58
+Yoric Ferronegro;M;LADINO;Arco Curto:6;;52
+Yoric Laminar;M;MAGO;Adaga Ritual:3;Seta Arcana:8;39
+Yoric Luzprata;M;LADINO;Punhal Sombrio:5;;47
+Yoric Pelegris;M;LADINO;Besta de Mao:7;;49
+Yvaine Cinzarubra;F;GUERREIRO;Montante:10;;55
+Yvaine Gelocorvo;F;LADINO;Adaga Gemea:6;;50
+Yvaine Laminar;F;CLERIGO;Cetro Bento:5;Punicao Divina:11;40
+Yvaine Luzprata;F;LADINO;Arco Curto:6;;49
+Yvaine Ostraval;F;LADINO;Adaga Gemea:6;;39
+Yvaine Riachoclaro;F;LADINO;Adaga Gemea:6;;44
+Yvaine Ventolesto;F;MAGO;Bastao Etereo:5;Raio Congelante:10;34
+Zander Cinzarubra;M;CLERIGO;Maca Sagrada:6;Escudo da Fe:7;45
+Zander Cravorrubro;M;MAGO;Adaga Ritual:3;Seta Arcana:8;28
+Zander Ferronegro;M;LADINO;Adaga Gemea:6;;51
+Zander Luzprata;M;CLERIGO;Cetro Bento:5;Escudo da Fe:7;52
+Zander Ostraval;M;LADINO;Punhal Sombrio:5;;55
+Zander Pelegris;M;MAGO;Bastao Etereo:5;Tempestade Eletrica:14;29
+Zander Quebrantosso;M;GUERREIRO;Espada Longa:7;;68
+Zander Sombravale;M;LADINO;Punhal Sombrio:5;;45
+Zander Urzevelha;M;LADINO;Besta de Mao:7;;52
+Zelda Cravorrubro;F;LADINO;Adaga Gemea:6;;49
+Zelda Gelocorvo;F;MAGO;Bastao Etereo:5;Raio Congelante:10;28
+Zelda Riachoclaro;F;MAGO;Adaga Ritual:3;Bola de Fogo:12;32
+Zelda Sombravale;F;LADINO;Arco Curto:6;;55
+Zelda Ventolesto;F;CLERIGO;Cetro Bento:5;Luz Curativa:9;47
+Zumbi Colossal;M;MONSTRO;Tentaculo:5;;75
+Zumbi das Ruinas;M;MONSTRO;Mandibula Brutal:9;Veneno Corrosivo:9;54
+Zumbi do Norte;M;MONSTRO;Presa Venenosa:6;Veneno Corrosivo:9;78
+Zumbi Errante;M;MONSTRO;Cauda Espinhosa:8;;36
+Zumbi Faminto;M;MONSTRO;Garra Afiada:7;;86
+Zumbi Maldito;M;MONSTRO;Cauda Espinhosa:8;Grito Aterrador:8;52
+Zumbi Selvagem;F;MONSTRO;Tentaculo:5;;83
+Zumbi Sombrio;M;MONSTRO;Mandibula Brutal:9;Grito Aterrador:8;35
+Zumbi Venenoso;M;MONSTRO;Mandibula Brutal:9;Grito Aterrador:8;30
