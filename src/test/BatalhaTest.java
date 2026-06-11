@@ -12,6 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Testes de unidade do combate: turno da batalha, dano recebido,
+ * sobrecarga do atacar e igualdade de heróis.
+ */
 public class BatalhaTest {
 
     private Heroi criarHeroi() {

@@ -3,6 +3,12 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Base de todo personagem do jogo: guarda os dados comuns a heróis e monstros
+ * e define o que cada filho é obrigado a saber fazer (usarHabilidade).
+ * Implementa Serializable — interface vazia que apenas marca a classe como
+ * conversível em bytes, exigência da exportação binária (.dat).
+ */
 public abstract class Personagem implements Serializable {
     private String nome;
     private Sexo sexo;
@@ -10,9 +16,19 @@ public abstract class Personagem implements Serializable {
     private Magia magia;
     private int vida;
 
+    /** Construtor vazio: usado quando os dados são preenchidos depois, via setters. */
     protected Personagem() {
     }
 
+    /**
+     * Cria o personagem já completo.
+     *
+     * @param nome  nome do personagem
+     * @param sexo  sexo (M/F)
+     * @param arma  arma equipada
+     * @param magia magia conhecida (pode ser null)
+     * @param vida  pontos de vida iniciais
+     */
     protected Personagem(String nome, Sexo sexo, Arma arma, Magia magia, int vida) {
         this.nome = nome;
         this.sexo = sexo;
@@ -58,18 +74,32 @@ public abstract class Personagem implements Serializable {
     }
 
     public void setVida(int vida) {
+        // Math.max impede estado inválido: a vida nunca fica negativa
         this.vida = Math.max(0, vida);
     }
 
+    /**
+     * Habilidade especial — método abstrato: cada filho (Heroi/Monstro)
+     * é obrigado a implementar a própria versão.
+     */
     public abstract void usarHabilidade();
 
+    /**
+     * Aplica dano diretamente na vida (ignora valores não positivos).
+     *
+     * @param dano quantidade a subtrair da vida
+     */
     public void receberDano(int dano) {
         if (dano <= 0) {
             return;
         }
+        // Math.max impede estado inválido: a vida nunca fica negativa
         vida = Math.max(0, vida - dano);
     }
 
+    /**
+     * Dois personagens são iguais quando todos os campos coincidem.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -85,6 +115,7 @@ public abstract class Personagem implements Serializable {
                 && Objects.equals(magia, outroPersonagem.magia);
     }
 
+    /** Anda em par com o equals: objetos iguais devem ter o mesmo hash. */
     @Override
     public int hashCode() {
         return Objects.hash(nome, sexo, arma, magia, vida);

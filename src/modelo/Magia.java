@@ -3,13 +3,25 @@ package modelo;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Magia conhecida por um personagem (no fichas.txt vem como "Nome:dano";
+ * guerreiros e ladinos não têm — campo vazio).
+ * Serializable para ser gravada junto na exportação binária.
+ */
 public class Magia implements Serializable {
     private String nome;
     private int dano;
 
+    /** Construtor vazio: usado quando os dados são preenchidos depois, via setters. */
     public Magia() {
     }
 
+    /**
+     * Cria a magia já completa.
+     *
+     * @param nome nome da magia
+     * @param dano dano que ela causa
+     */
     public Magia(String nome, int dano) {
         this.nome = nome;
         this.dano = dano;
@@ -31,6 +43,9 @@ public class Magia implements Serializable {
         this.dano = dano;
     }
 
+    /**
+     * Duas magias são iguais quando nome e dano coincidem.
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -42,6 +57,7 @@ public class Magia implements Serializable {
         return dano == outraMagia.dano && Objects.equals(nome, outraMagia.nome);
     }
 
+    /** Anda em par com o equals: objetos iguais devem ter o mesmo hash. */
     @Override
     public int hashCode() {
         return Objects.hash(nome, dano);

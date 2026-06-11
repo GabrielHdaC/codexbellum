@@ -8,15 +8,29 @@ import repositorio.FichaRepositorio;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Ponto de entrada do programa: um menu interativo no console que comanda
+ * o repositório de fichas e a batalha.
+ */
 public class Principal {
 
+    /**
+     * Loop principal: exibe o menu, lê a opção digitada e executa a ação
+     * correspondente, repetindo até o usuário digitar 0.
+     *
+     * @param args não utilizado
+     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
         FichaRepositorio fichaRepositorio = new FichaRepositorio();
         Batalha batalha = new Batalha();
+        // O main é static (roda sem nenhum objeto existir); o exibirMenu é
+        // método de instância, então é preciso criar um Principal para chamá-lo
         Principal principal = new Principal();
 
+        // Declarada fora do do-while para a condição (opcao != 0) enxergá-la;
+        // começa em -1 para um erro de leitura não encerrar o loop por engano
         int opcao = -1;
         do {
             principal.exibirMenu();
@@ -56,6 +70,9 @@ public class Principal {
                         Personagem atacante = fichaRepositorio.getFichas().get(indiceAtacante);
                         Personagem defensor = fichaRepositorio.getFichas().get(indiceDefensor);
 
+                        // Cast: a lista guarda Personagem, mas o executarTurno pede
+                        // Combatente. Como todo Heroi/Monstro implementa Combatente,
+                        // a conversão é segura.
                         batalha.executarTurno((Combatente) atacante, (Combatente) defensor);
                         System.out.println(atacante.getNome() + " atacou " + defensor.getNome()
                                 + "! Vida do defensor agora: " + defensor.getVida());
@@ -69,6 +86,8 @@ public class Principal {
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Digite um número válido!");
+                // O texto inválido fica preso no Scanner; sem descartá-lo aqui,
+                // o próximo nextInt falharia de novo, para sempre (loop infinito)
                 sc.nextLine();
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Não existe ficha com esse número!");
@@ -78,6 +97,9 @@ public class Principal {
         sc.close();
     }
 
+    /**
+     * Mostra as opções do menu — apenas exibe; quem lê e decide é o main.
+     */
     public void exibirMenu() {
         System.out.println("=== CodexBellum ===");
         System.out.println("1 - Carregar fichas do txt");

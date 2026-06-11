@@ -14,6 +14,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Testes de unidade do FichaRepositorio: leitura do txt, conversão dos campos,
+ * exceção para ficha inválida, ordenação e exportação/importação binária.
+ */
 public class FichaRepositorioTest {
 
     private static final String ARQUIVO_FICHAS = "src/fichas.txt";
