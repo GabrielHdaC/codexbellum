@@ -1,5 +1,7 @@
 package app;
 
+import combate.Batalha;
+import combate.Combatente;
 import modelo.Personagem;
 import repositorio.FichaRepositorio;
 
@@ -12,6 +14,7 @@ public class Principal {
         Scanner sc = new Scanner(System.in);
 
         FichaRepositorio fichaRepositorio = new FichaRepositorio();
+        Batalha batalha = new Batalha();
         Principal principal = new Principal();
 
         int opcao = -1;
@@ -41,7 +44,21 @@ public class Principal {
                         fichaRepositorio.importarDat("fichas.dat");
                         break;
                     case 6:
-                        // Falta implementar
+                        if (fichaRepositorio.getFichas().isEmpty()) {
+                            System.out.println("Carregue as fichas primeiro (opção 1)!");
+                            break;
+                        }
+                        System.out.println("Número do atacante (0 a " + (fichaRepositorio.getFichas().size() - 1) + "):");
+                        int indiceAtacante = sc.nextInt();
+                        System.out.println("Número do defensor:");
+                        int indiceDefensor = sc.nextInt();
+
+                        Personagem atacante = fichaRepositorio.getFichas().get(indiceAtacante);
+                        Personagem defensor = fichaRepositorio.getFichas().get(indiceDefensor);
+
+                        batalha.executarTurno((Combatente) atacante, (Combatente) defensor);
+                        System.out.println(atacante.getNome() + " atacou " + defensor.getNome()
+                                + "! Vida do defensor agora: " + defensor.getVida());
                         break;
                     case 0:
                         System.out.println("Até a próxima!");
@@ -53,6 +70,8 @@ public class Principal {
             } catch (InputMismatchException e) {
                 System.out.println("Digite um número válido!");
                 sc.nextLine();
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("Não existe ficha com esse número!");
             }
         } while (opcao != 0);
     }

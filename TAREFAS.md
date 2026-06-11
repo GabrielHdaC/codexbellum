@@ -25,11 +25,10 @@ java -jar lib\junit-platform-console-standalone-1.10.2.jar execute --class-path 
 - [x] `ordenarPorVida` — ordena a lista por vida (menor → maior)
 - [x] `implements Serializable` em Personagem, Arma e Magia
 - [ ] `exportarDat` — quase pronto (ver aviso do flush abaixo)
-- [ ] `importarDat` — `ObjectInputStream` + `FileInputStream`, `readObject` com cast
-- [ ] `Batalha.executarTurno(Combatente, Combatente)` — atacante ataca, defensor
-      defende. **Depende dos métodos do modelo (Parte 2)** — integrar quando o
-      parceiro terminar
-- [ ] `Principal` — menu no console com `Scanner`: carregar txt, listar fichas,
+- [x] `importarDat` — `ObjectInputStream` + `FileInputStream`, `readObject` com cast
+- [x] `Batalha.executarTurno(Combatente, Combatente)` — atacante ataca o defensor
+- [x] case 6 do menu — escolhe dois lutadores pelo número e executa o turno
+- [x] `Principal` — menu no console com `Scanner`: carregar txt, listar fichas,
       ordenar por vida, exportar .dat, importar .dat, batalhar, sair.
       Try/catch pra opção inválida
 
@@ -41,18 +40,18 @@ arquivo pode não ser gravado (buffer não descarregado).
 
 **Meta: deixar o `BatalhaTest` 100% verde.**
 
-- [ ] `Personagem.receberDano(int dano)` — `vida -= dano` (sem ficar negativo)
-- [ ] `Heroi.atacar(Personagem)` — causa o dano da arma equipada
-- [ ] `Heroi.atacar(Personagem, Arma)` — sobrecarga: dano da arma passada
-- [ ] `Heroi.defender(int dano)` — repassa pro `receberDano`
-- [ ] `Heroi.usarHabilidade()` — efeito conforme a `Classe` (MAGO usa magia,
-      CLERIGO cura, GUERREIRO dano extra, LADINO esquiva)
-- [ ] `Monstro` — mesmos métodos, lógica de monstro
-- [ ] Conferir os `equals` (Arma, Magia, Heroi, Monstro já têm — entender pra
-      apresentação)
+- [x] `Personagem.receberDano(int dano)` — `vida -= dano` (sem ficar negativo)
+- [x] `Heroi.atacar(Personagem)` — causa o dano da arma equipada
+- [x] `Heroi.atacar(Personagem, Arma)` — sobrecarga: dano da arma passada
+- [x] `Heroi.defender(int dano)` — reduz o dano conforme a classe
+- [x] `Heroi.usarHabilidade()` — cura conforme a `Classe`
+- [x] `Monstro` — mesmos métodos, lógica de monstro
+- [x] `equals` em Arma, Magia, Heroi, Monstro e Personagem
 
-Obs.: o `implements Serializable` no `Personagem` já foi adicionado pelo
-Gabriel (era necessário pro export da Parte 1) — não remover.
+Obs. da integração (12/06/2026): o modelo do parceiro foi integrado a partir de
+um zip — ele tinha recriado o projeto do zero, então foi preciso readicionar o
+`implements Serializable` (Personagem, Arma, Magia) e o `implements Combatente`
+(Heroi, Monstro). Da próxima vez: clonar o repositório e trabalhar numa branch.
 
 ---
 
