@@ -1,4 +1,8 @@
 package repositorio;
 
-public class FichaInvalidaException {
+public class FichaInvalidaException extends RuntimeException {
+
+    public FichaInvalidaException(String mensagem) {
+        super(mensagem);
+    }
 }
