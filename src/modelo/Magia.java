@@ -1,8 +1,9 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Magia {
+public class Magia implements Serializable {
 
     private String nome;
     private int dano;
