@@ -3,6 +3,7 @@ package app;
 import combate.Batalha;
 import combate.Combatente;
 import modelo.Personagem;
+import repositorio.FichaInvalidaException;
 import repositorio.FichaRepositorio;
 
 import java.util.InputMismatchException;
@@ -39,8 +40,14 @@ public class Principal {
 
                 switch (opcao) {
                     case 1:
-                        fichaRepositorio.lerTxt("src/fichas.txt");
-                        System.out.println(fichaRepositorio.getFichas().size() + " fichas carregadas!");
+                        // Captura a exceção do domínio: um txt corrompido avisa
+                        // o usuário em vez de derrubar o menu inteiro
+                        try {
+                            fichaRepositorio.lerTxt("src/fichas.txt");
+                            System.out.println(fichaRepositorio.getFichas().size() + " fichas carregadas!");
+                        } catch (FichaInvalidaException e) {
+                            System.out.println("Arquivo com problema: " + e.getMessage());
+                        }
                         break;
                     case 2:
                         for (Personagem personagem : fichaRepositorio.getFichas()) {
