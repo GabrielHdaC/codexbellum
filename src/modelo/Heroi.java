@@ -40,6 +40,8 @@ public class Heroi extends Personagem implements Combatente {
 
     /**
      * Habilidade do herói: recupera uma quantidade de vida que depende da classe.
+     * O clérigo cura uma base divina que ainda é reforçada pela magia curativa
+     * equipada (Luz Curativa, Escudo da Fé).
      */
     @Override
     public void usarHabilidade() {
@@ -51,12 +53,47 @@ public class Heroi extends Personagem implements Combatente {
             case GUERREIRO -> setVida(getVida() + 10);
             case MAGO -> setVida(getVida() + 5);
             case LADINO -> setVida(getVida() + 3);
-            case CLERIGO -> setVida(getVida() + 15);
+            case CLERIGO -> {
+                // Cura divina base; uma magia de cura reforça a recuperação.
+                // Magia ofensiva (Punição Divina) não cura — ela vai pro ataque.
+                int cura = 15;
+                if (getMagia() != null && getMagia().getTipo() == TipoMagia.CURA) {
+                    cura += getMagia().getDano();
+                }
+                setVida(getVida() + cura);
+            }
         }
     }
 
     /**
-     * Ataca com a arma equipada; mago soma o dano da magia ao golpe.
+     * O que é: o dano bruto que o herói produz num golpe.
+     * O que faz: soma o dano da arma e, conforme a classe, o da magia — o mago
+     * canaliza qualquer magia; o clérigo só soma magia ofensiva (ex: Punição
+     * Divina), pois magia de cura fica reservada para a habilidade.
+     * Por que assim: separar o cálculo da aplicação deixa a Batalha mandar esse
+     * dano ao defender() do alvo — é o defensor quem decide quanto absorve.
+     *
+     * @return dano bruto do golpe, antes de qualquer defesa
+     */
+    @Override
+    public int calcularDano() {
+        int dano = getArma() != null ? getArma().getDano() : 1;
+        if (getMagia() != null) {
+            boolean magoCanalizaMagia = classe == Classe.MAGO;
+            boolean clerigoUsaMagiaOfensiva =
+                    classe == Classe.CLERIGO && getMagia().getTipo() == TipoMagia.DANO;
+            if (magoCanalizaMagia || clerigoUsaMagiaOfensiva) {
+                dano += getMagia().getDano();
+            }
+        }
+        return dano;
+    }
+
+    /**
+     * O que é: um golpe direto no alvo.
+     * O que faz: aplica na vida do alvo o dano apurado em calcularDano().
+     * Por que assim: o ataque "cru" (sem defesa) é a peça básica; quem orquestra
+     * ataque + defesa de um turno é a Batalha, combinando calcularDano() e defender().
      *
      * @param alvo personagem que recebe o dano
      */
@@ -65,12 +102,7 @@ public class Heroi extends Personagem implements Combatente {
         if (alvo == null) {
             return;
         }
-        int danoBase = getArma() != null ? getArma().getDano() : 1;
-        if (classe == Classe.MAGO && getMagia() != null) {
-            danoBase += getMagia().getDano();
-        }
-
-        alvo.receberDano(danoBase);
+        alvo.receberDano(calcularDano());
     }
 
     /**

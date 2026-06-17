@@ -1,100 +1,49 @@
 package app;
 
+import app.menu.GerenciadorMenu;
 import combate.Batalha;
-import combate.Combatente;
-import modelo.Personagem;
-import repositorio.FichaInvalidaException;
 import repositorio.FichaRepositorio;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * Ponto de entrada do programa: um menu interativo no console que comanda
- * o repositório de fichas e a batalha.
+ * O que é: ponto de entrada do CodexBellum — a tela do menu de console.
+ * O que faz: monta as dependências, exibe o menu e, a cada opção lida, pede ao
+ * GerenciadorMenu para executá-la, repetindo até o usuário digitar 0.
+ * Por que assim: o Principal cuida só do laço e da exibição do menu; o que cada
+ * opção faz mora no GerenciadorMenu, mantendo o ponto de entrada minúsculo.
  */
 public class Principal {
 
     /**
-     * Loop principal: exibe o menu, lê a opção digitada e executa a ação
-     * correspondente, repetindo até o usuário digitar 0.
+     * O que é: o laço principal do programa.
+     * O que faz: repete "mostrar menu → ler opção → executar" até o usuário
+     * digitar 0, tratando entrada inválida e índice inexistente.
+     * Por que assim: a leitura e o tratamento de erro ficam num só lugar; a
+     * execução da opção é delegada, então o main permanece curto.
      *
      * @param args não utilizado
      */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-
         FichaRepositorio fichaRepositorio = new FichaRepositorio();
         Batalha batalha = new Batalha();
-        // O main é static (roda sem nenhum objeto existir); o exibirMenu é
-        // método de instância, então é preciso criar um Principal para chamá-lo
+        // main é static; exibirMenu é de instância, daí criamos um Principal
         Principal principal = new Principal();
+        GerenciadorMenu menu = new GerenciadorMenu(fichaRepositorio, batalha, sc);
 
-        // Declarada fora do do-while para a condição (opcao != 0) enxergá-la;
-        // começa em -1 para um erro de leitura não encerrar o loop por engano
+        // começa em -1 para que um erro de leitura não encerre o loop por engano
         int opcao = -1;
         do {
             principal.exibirMenu();
             try {
                 opcao = sc.nextInt();
-
-                switch (opcao) {
-                    case 1:
-                        // Captura a exceção do domínio: um txt corrompido avisa
-                        // o usuário em vez de derrubar o menu inteiro
-                        try {
-                            fichaRepositorio.lerTxt("src/fichas.txt");
-                            System.out.println(fichaRepositorio.getFichas().size() + " fichas carregadas!");
-                        } catch (FichaInvalidaException e) {
-                            System.out.println("Arquivo com problema: " + e.getMessage());
-                        }
-                        break;
-                    case 2:
-                        for (Personagem personagem : fichaRepositorio.getFichas()) {
-                            System.out.println(personagem.getNome() + " | vida: " + personagem.getVida());
-                        }
-                        break;
-                    case 3:
-                        fichaRepositorio.ordenarPorVida();
-                        System.out.println("Fichas ordenadas por vida!");
-                        break;
-                    case 4:
-                        fichaRepositorio.exportarDat("fichas.dat");
-                        break;
-                    case 5:
-                        fichaRepositorio.importarDat("fichas.dat");
-                        break;
-                    case 6:
-                        if (fichaRepositorio.getFichas().isEmpty()) {
-                            System.out.println("Carregue as fichas primeiro (opção 1)!");
-                            break;
-                        }
-                        System.out.println("Número do atacante (0 a " + (fichaRepositorio.getFichas().size() - 1) + "):");
-                        int indiceAtacante = sc.nextInt();
-                        System.out.println("Número do defensor:");
-                        int indiceDefensor = sc.nextInt();
-
-                        Personagem atacante = fichaRepositorio.getFichas().get(indiceAtacante);
-                        Personagem defensor = fichaRepositorio.getFichas().get(indiceDefensor);
-
-                        // Cast: a lista guarda Personagem, mas o executarTurno pede
-                        // Combatente. Como todo Heroi/Monstro implementa Combatente,
-                        // a conversão é segura.
-                        batalha.executarTurno((Combatente) atacante, (Combatente) defensor);
-                        System.out.println(atacante.getNome() + " atacou " + defensor.getNome()
-                                + "! Vida do defensor agora: " + defensor.getVida());
-                        break;
-                    case 0:
-                        System.out.println("Até a próxima!");
-                        break;
-                    default:
-                        System.out.println("Opção não encontrada");
-                        break;
-                }
+                menu.executar(opcao);
             } catch (InputMismatchException e) {
                 System.out.println("Digite um número válido!");
-                // O texto inválido fica preso no Scanner; sem descartá-lo aqui,
-                // o próximo nextInt falharia de novo, para sempre (loop infinito)
+                // o texto inválido fica preso no Scanner; sem descartá-lo, o
+                // próximo nextInt falharia de novo para sempre (loop infinito)
                 sc.nextLine();
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("Não existe ficha com esse número!");
@@ -105,7 +54,10 @@ public class Principal {
     }
 
     /**
-     * Mostra as opções do menu — apenas exibe; quem lê e decide é o main.
+     * O que é: a tela do menu.
+     * O que faz: apenas imprime as opções disponíveis.
+     * Por que assim: separa a exibição da decisão — quem lê e roteia é o main,
+     * e quem executa cada opção é o GerenciadorMenu.
      */
     public void exibirMenu() {
         System.out.println("=== CodexBellum ===");

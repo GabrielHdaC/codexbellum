@@ -2,6 +2,7 @@ package modelo;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Set;
 
 /**
  * Magia conhecida por um personagem (no fichas.txt vem como "Nome:dano";
@@ -9,6 +10,14 @@ import java.util.Objects;
  * Serializable para ser gravada junto na exportação binária.
  */
 public class Magia implements Serializable {
+
+    /**
+     * Magias de cura/suporte do jogo. Como o arquivo não traz o tipo da magia,
+     * reconhecemos as curativas pelo nome; qualquer outra é considerada de dano.
+     * Atualize este conjunto se novas magias de cura forem adicionadas ao txt.
+     */
+    private static final Set<String> NOMES_DE_CURA = Set.of("Luz Curativa", "Escudo da Fe");
+
     private String nome;
     private int dano;
 
@@ -41,6 +50,17 @@ public class Magia implements Serializable {
 
     public void setDano(int dano) {
         this.dano = dano;
+    }
+
+    /**
+     * Deduz a natureza da magia pelo nome: as listadas em NOMES_DE_CURA são de
+     * cura, todas as outras são de dano. Usado pelo clérigo para decidir entre
+     * reforçar a cura (usarHabilidade) ou o golpe (atacar).
+     *
+     * @return CURA se for uma magia de cura/suporte, senão DANO
+     */
+    public TipoMagia getTipo() {
+        return NOMES_DE_CURA.contains(nome) ? TipoMagia.CURA : TipoMagia.DANO;
     }
 
     /**

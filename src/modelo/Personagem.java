@@ -98,6 +98,18 @@ public abstract class Personagem implements Serializable {
     }
 
     /**
+     * O que é: a checagem de estado vital do personagem.
+     * O que faz: responde se ele ainda está vivo (vida maior que zero).
+     * Por que assim: centraliza a regra "vivo = vida > 0" num único método,
+     * deixando o laço de batalha e as validações do menu mais legíveis.
+     *
+     * @return true se ainda tem vida; false se chegou a zero
+     */
+    public boolean estaVivo() {
+        return vida > 0;
+    }
+
+    /**
      * Dois personagens são iguais quando todos os campos coincidem.
      */
     @Override
