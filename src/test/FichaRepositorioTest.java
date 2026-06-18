@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -48,14 +49,71 @@ public class FichaRepositorioTest {
 
     @Test
     public void lerTxtDeveLancarExcecaoParaFichaInvalida() throws IOException {
-        Path arquivo = Files.createTempFile("fichas-invalidas", ".txt");
-        Files.write(arquivo, List.of(
+        Path arquivo = arquivoTemp(
                 "nome;sexo;classe;arma;magia;vida",
-                "linha sem os campos esperados"));
+                "linha sem os campos esperados");
         FichaRepositorio repositorio = new FichaRepositorio();
 
         assertThrows(FichaInvalidaException.class,
                 () -> repositorio.lerTxt(arquivo.toString()));
+    }
+
+    @Test
+    public void lerTxtDeveLancarExcecaoQuandoArmaNaoTemDano() throws IOException {
+        // "Machado" sem ":dano" — antes estourava ArrayIndexOutOfBoundsException
+        Path arquivo = arquivoTemp(
+                "nome;sexo;classe;arma;magia;vida",
+                "Bjorn;M;GUERREIRO;Machado;;40");
+        FichaRepositorio repositorio = new FichaRepositorio();
+
+        assertThrows(FichaInvalidaException.class,
+                () -> repositorio.lerTxt(arquivo.toString()));
+    }
+
+    @Test
+    public void lerTxtDeveDeixarMagiaNulaQuandoOCampoEstaVazio() throws IOException {
+        Path arquivo = arquivoTemp(
+                "nome;sexo;classe;arma;magia;vida",
+                "Bjorn;M;GUERREIRO;Machado:9;;40");
+        FichaRepositorio repositorio = new FichaRepositorio();
+
+        repositorio.lerTxt(arquivo.toString());
+
+        Personagem ficha = repositorio.getFichas().get(0);
+        assertNull(ficha.getMagia(), "guerreiro com campo de magia vazio fica sem magia");
+        assertEquals("Machado", ficha.getArma().getNome());
+        assertEquals(9, ficha.getArma().getDano());
+    }
+
+    @Test
+    public void lerTxtDuasVezesNaoDeveDuplicarABase() {
+        FichaRepositorio repositorio = new FichaRepositorio();
+
+        repositorio.lerTxt(ARQUIVO_FICHAS);
+        int primeiraLeitura = repositorio.getFichas().size();
+        repositorio.lerTxt(ARQUIVO_FICHAS);
+
+        assertEquals(primeiraLeitura, repositorio.getFichas().size(),
+                "a segunda leitura substitui a base, não acumula");
+    }
+
+    @Test
+    public void getFichasDeveSerCopiaDefensiva() {
+        FichaRepositorio repositorio = new FichaRepositorio();
+        repositorio.lerTxt(ARQUIVO_FICHAS);
+
+        List<Personagem> fichas = repositorio.getFichas();
+        int total = fichas.size();
+        fichas.clear();
+
+        assertEquals(total, repositorio.getFichas().size(),
+                "mexer na lista devolvida não pode afetar a base interna");
+    }
+
+    private Path arquivoTemp(String... linhas) throws IOException {
+        Path arquivo = Files.createTempFile("fichas-teste", ".txt");
+        Files.write(arquivo, List.of(linhas));
+        return arquivo;
     }
 
     @Test
@@ -83,7 +141,7 @@ public class FichaRepositorioTest {
         FichaRepositorio importado = new FichaRepositorio();
         importado.importarDat(arquivoDat.toString());
 
-        assertEquals(original.getFichas().size(), importado.getFichas().size(),
-                "a base importada deve ter a mesma quantidade de fichas da exportada");
+        assertEquals(original.getFichas(), importado.getFichas(),
+                "a base importada deve ser igual, ficha a ficha, à exportada");
     }
 }

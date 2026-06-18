@@ -62,27 +62,11 @@ public class Monstro extends Personagem implements Combatente {
      */
     @Override
     public int calcularDano() {
-        int dano = getArma() != null ? getArma().getDano() : 1;
+        int dano = danoDaArma();
         if (getMagia() != null) {
             dano += getMagia().getDano();
         }
         return dano;
-    }
-
-    /**
-     * O que é: um golpe direto no alvo.
-     * O que faz: aplica na vida do alvo o dano apurado em calcularDano().
-     * Por que assim: ataque "cru" sem defesa; a orquestração de ataque + defesa
-     * do turno fica na Batalha (calcularDano() + defender()).
-     *
-     * @param alvo personagem que recebe o dano
-     */
-    @Override
-    public void atacar(Personagem alvo) {
-        if (alvo == null) {
-            return;
-        }
-        alvo.receberDano(calcularDano());
     }
 
     /**
@@ -103,12 +87,8 @@ public class Monstro extends Personagem implements Combatente {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Monstro)) {
-            return false;
-        }
+        // Monstro não acrescenta campos: basta a igualdade exata de tipo + campos
+        // base que o super já garante (getClass).
         return super.equals(obj);
     }
 

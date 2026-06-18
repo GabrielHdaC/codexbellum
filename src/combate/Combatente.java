@@ -10,11 +10,18 @@ import modelo.Personagem;
 public interface Combatente {
 
     /**
-     * Ataca o alvo, causando dano conforme as regras de quem implementa.
+     * Ataca o alvo com a regra única do combate: calcula o próprio dano e o
+     * entrega ao defender() do alvo, que aplica a própria redução de defesa.
+     * É um default method porque Heroi e Monstro faziam exatamente isto — manter
+     * aqui evita duplicar o golpe nas duas classes.
      *
-     * @param personagem alvo do ataque
+     * @param alvo alvo do ataque
      */
-    void atacar(Personagem personagem);
+    default void atacar(Personagem alvo) {
+        if (alvo instanceof Combatente defensor) {
+            defensor.defender(calcularDano());
+        }
+    }
 
     /**
      * Recebe um golpe, podendo reduzir o dano conforme as regras de quem implementa.

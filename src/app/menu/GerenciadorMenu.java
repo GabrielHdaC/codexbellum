@@ -5,6 +5,7 @@ import combate.Batalha;
 import modelo.Personagem;
 import repositorio.FichaInvalidaException;
 import repositorio.FichaRepositorio;
+import repositorio.PersistenciaException;
 
 import java.util.Scanner;
 
@@ -53,8 +54,8 @@ public class GerenciadorMenu {
             case 1 -> carregarFichas();                     // carrega o fichas.txt
             case 2 -> listarFichas();                       // lista nome e vida de todas
             case 3 -> ordenarPorVida();                     // ordena da menor vida para a maior
-            case 4 -> repo.exportarDat("fichas.dat");       // salva a base em binário (.dat)
-            case 5 -> repo.importarDat("fichas.dat");       // recarrega a base do binário
+            case 4 -> exportar();                           // salva a base em binário (.dat)
+            case 5 -> importar();                           // recarrega a base do binário
             case 6 -> new GerenciadorBatalha(repo, batalha, sc).iniciar(); // combate: herói (você) x monstro
             case 0 -> System.out.println("Até a próxima!"); // encerra o programa
             default -> System.out.println("Opção não encontrada");
@@ -72,8 +73,42 @@ public class GerenciadorMenu {
         try {
             repo.lerTxt("src/fichas.txt");
             System.out.println(repo.getFichas().size() + " fichas carregadas!");
-        } catch (FichaInvalidaException e) {
+        } catch (FichaInvalidaException | PersistenciaException e) {
+            // a persistência agora lança em vez de imprimir; a mensagem ao
+            // usuário é decidida aqui, na camada de menu
             System.out.println("Arquivo com problema: " + e.getMessage());
+        }
+    }
+
+    /**
+     * O que é: a ação de exportar a base para arquivo binário.
+     * O que faz: pede ao repositório para gravar o .dat e confirma; se a gravação
+     * falhar, avisa em vez de fingir que deu certo.
+     * Por que assim: a mensagem (sucesso ou erro) é responsabilidade da camada de
+     * menu, não da persistência — por isso o try/catch fica aqui.
+     */
+    private void exportar() {
+        try {
+            repo.exportarDat("fichas.dat");
+            System.out.println("Base exportada com sucesso!");
+        } catch (PersistenciaException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+
+    /**
+     * O que é: a ação de importar a base de um arquivo binário.
+     * O que faz: pede ao repositório para ler o .dat e confirma; se a leitura
+     * falhar, avisa o usuário.
+     * Por que assim: mesma divisão de responsabilidade do exportar — o repositório
+     * sinaliza o erro, o menu decide o que mostrar.
+     */
+    private void importar() {
+        try {
+            repo.importarDat("fichas.dat");
+            System.out.println("Base importada com sucesso!");
+        } catch (PersistenciaException e) {
+            System.out.println(e.getMessage());
         }
     }
 

@@ -98,6 +98,19 @@ public abstract class Personagem implements Serializable {
     }
 
     /**
+     * O que é: o dano base que vem só da arma equipada.
+     * O que faz: devolve o dano da arma, ou 1 se o personagem estiver desarmado.
+     * Por que assim: Heroi e Monstro partem deste mesmo valor em calcularDano() e
+     * cada um decide se soma (ou não) a magia — Template Method, sem duplicar a
+     * regra do "desarmado bate 1".
+     *
+     * @return dano da arma equipada, ou 1 se não houver arma
+     */
+    protected int danoDaArma() {
+        return arma != null ? arma.getDano() : 1;
+    }
+
+    /**
      * O que é: a checagem de estado vital do personagem.
      * O que faz: responde se ele ainda está vivo (vida maior que zero).
      * Por que assim: centraliza a regra "vivo = vida > 0" num único método,
@@ -110,16 +123,19 @@ public abstract class Personagem implements Serializable {
     }
 
     /**
-     * Dois personagens são iguais quando todos os campos coincidem.
+     * Dois personagens são iguais quando são do mesmo tipo exato e todos os
+     * campos coincidem. Usar getClass (em vez de instanceof) garante que um Heroi
+     * e um Monstro com os mesmos campos base nunca sejam considerados iguais.
      */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
         }
-        if (!(obj instanceof Personagem outroPersonagem)) {
+        if (obj == null || getClass() != obj.getClass()) {
             return false;
         }
+        Personagem outroPersonagem = (Personagem) obj;
         return vida == outroPersonagem.vida
                 && Objects.equals(nome, outroPersonagem.nome)
                 && sexo == outroPersonagem.sexo
