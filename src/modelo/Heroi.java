@@ -48,21 +48,9 @@ public class Heroi extends Personagem implements Combatente {
         if (classe == null) {
             return;
         }
-
-        switch (classe) {
-            case GUERREIRO -> setVida(getVida() + 10);
-            case MAGO -> setVida(getVida() + 5);
-            case LADINO -> setVida(getVida() + 3);
-            case CLERIGO -> {
-                // Cura divina base; uma magia de cura reforça a recuperação.
-                // Magia ofensiva (Punição Divina) não cura — ela vai pro ataque.
-                int cura = 15;
-                if (getMagia() != null && getMagia().getTipo() == TipoMagia.CURA) {
-                    cura += getMagia().getDano();
-                }
-                setVida(getVida() + cura);
-            }
-        }
+        // a regra de cura mora na própria classe (Strategy): o clérigo, por
+        // exemplo, ainda soma a magia de cura equipada
+        setVida(getVida() + classe.curar(getMagia()));
     }
 
     /**
@@ -77,47 +65,28 @@ public class Heroi extends Personagem implements Combatente {
      */
     @Override
     public int calcularDano() {
-        int dano = getArma() != null ? getArma().getDano() : 1;
-        if (getMagia() != null) {
-            boolean magoCanalizaMagia = classe == Classe.MAGO;
-            boolean clerigoUsaMagiaOfensiva =
-                    classe == Classe.CLERIGO && getMagia().getTipo() == TipoMagia.DANO;
-            if (magoCanalizaMagia || clerigoUsaMagiaOfensiva) {
-                dano += getMagia().getDano();
-            }
+        int dano = danoDaArma();
+        // cada classe decide se a magia entra no golpe (mago canaliza qualquer
+        // magia; clérigo só a ofensiva; guerreiro e ladino, nunca)
+        if (classe != null && classe.somaMagiaNoAtaque(getMagia())) {
+            dano += getMagia().getDano();
         }
         return dano;
     }
 
     /**
-     * O que é: um golpe direto no alvo.
-     * O que faz: aplica na vida do alvo o dano apurado em calcularDano().
-     * Por que assim: o ataque "cru" (sem defesa) é a peça básica; quem orquestra
-     * ataque + defesa de um turno é a Batalha, combinando calcularDano() e defender().
-     *
-     * @param alvo personagem que recebe o dano
-     */
-    @Override
-    public void atacar(Personagem alvo) {
-        if (alvo == null) {
-            return;
-        }
-        alvo.receberDano(calcularDano());
-    }
-
-    /**
      * Sobrecarga do atacar: mesmo nome, parâmetros diferentes.
-     * Ataca usando a arma recebida em vez da equipada.
+     * Ataca usando a arma recebida em vez da equipada; o alvo ainda aplica a
+     * própria defesa, como em qualquer golpe.
      *
-     * @param alvo personagem que recebe o dano
+     * @param alvo personagem que recebe o golpe
      * @param arma arma usada neste golpe
      */
     public void atacar(Personagem alvo, Arma arma) {
-        if (alvo == null) {
-            return;
+        if (alvo instanceof Combatente defensor) {
+            int danoBase = arma != null ? arma.getDano() : 1;
+            defensor.defender(danoBase);
         }
-        int danoBase = arma != null ? arma.getDano() : 1;
-        alvo.receberDano(danoBase);
     }
 
     /**
@@ -131,17 +100,8 @@ public class Heroi extends Personagem implements Combatente {
         if (dano <= 0) {
             return;
         }
-
-        int danoFinal = dano;
-        if (classe != null) {
-            danoFinal = switch (classe) {
-                case GUERREIRO -> dano / 2;
-                case MAGO -> (int) Math.ceil(dano * 0.9);
-                case LADINO -> (int) Math.ceil(dano * 0.7);
-                case CLERIGO -> (int) Math.ceil(dano * 0.8);
-            };
-        }
-
+        // cada classe aplica a própria redução de defesa (Strategy)
+        int danoFinal = classe != null ? classe.reduzirDano(dano) : dano;
         receberDano(danoFinal);
     }
 
@@ -150,13 +110,13 @@ public class Heroi extends Personagem implements Combatente {
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (!(obj instanceof Heroi outroHeroi)) {
+        // super.equals já exige o mesmo tipo exato (getClass) e compara os campos
+        // base; aqui só falta a classe, exclusiva do herói.
+        if (!super.equals(obj)) {
             return false;
         }
-        return super.equals(obj) && classe == outroHeroi.classe;
+        Heroi outroHeroi = (Heroi) obj;
+        return classe == outroHeroi.classe;
     }
 
     /** Anda em par com o equals: objetos iguais devem ter o mesmo hash. */

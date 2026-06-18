@@ -52,11 +52,11 @@ public class GerenciadorBatalha {
             return;
         }
 
-        Heroi heroi = selecionarHeroi();
+        Heroi heroi = selecionar(Heroi.class, "seu Herói", "Você só pode controlar Heróis!");
         if (heroi == null) {
             return; // a mensagem do motivo já saiu na seleção
         }
-        Monstro monstro = selecionarMonstro();
+        Monstro monstro = selecionar(Monstro.class, "Monstro inimigo", "O inimigo precisa ser um Monstro!");
         if (monstro == null) {
             return;
         }
@@ -76,49 +76,33 @@ public class GerenciadorBatalha {
     }
 
     /**
-     * O que é: a escolha do herói que o jogador vai controlar.
-     * O que faz: lê um índice e devolve o personagem só se for um Herói vivo;
-     * caso contrário, explica o motivo e devolve null.
-     * Por que assim: concentra a regra "só Herói, e vivo" num lugar; devolver
-     * null sinaliza ao chamador para abortar a batalha sem lançar exceção.
+     * O que é: a escolha validada de um combatente da base.
+     * O que faz: lê um índice e devolve o personagem só se ele for do tipo pedido
+     * (Heroi ou Monstro) e estiver vivo; caso contrário, explica o motivo e
+     * devolve null.
+     * Por que assim: herói e monstro tinham a MESMA validação (tipo + vivo)
+     * duplicada; um único método parametrizado pelo tipo elimina a repetição, e
+     * devolver null sinaliza ao chamador para abortar a batalha sem exceção.
      *
-     * @return o herói escolhido, ou null se a escolha for inválida
+     * @param tipo     classe esperada do combatente (Heroi.class ou Monstro.class)
+     * @param papel    como o combatente aparece na pergunta ao jogador
+     * @param erroTipo mensagem exibida quando o escolhido não é do tipo esperado
+     * @param <T>      tipo do combatente selecionado
+     * @return o combatente escolhido, ou null se a escolha for inválida
      */
-    private Heroi selecionarHeroi() {
-        System.out.println("Número do seu Herói (0 a " + (repo.getFichas().size() - 1) + "):");
+    private <T extends Personagem> T selecionar(Class<T> tipo, String papel, String erroTipo) {
+        System.out.println("Número do " + papel + " (0 a " + (repo.getFichas().size() - 1) + "):");
         Personagem escolhido = repo.getFichas().get(sc.nextInt());
-        if (!(escolhido instanceof Heroi heroi)) {
-            System.out.println("Você só pode controlar Heróis!");
+        if (!tipo.isInstance(escolhido)) {
+            System.out.println(erroTipo);
             return null;
         }
-        if (!heroi.estaVivo()) {
-            System.out.println(heroi.getNome() + " está morto e não pode batalhar!");
+        T combatente = tipo.cast(escolhido);
+        if (!combatente.estaVivo()) {
+            System.out.println(combatente.getNome() + " está morto e não pode batalhar!");
             return null;
         }
-        return heroi;
-    }
-
-    /**
-     * O que é: a escolha do monstro inimigo.
-     * O que faz: lê um índice e devolve o personagem só se for um Monstro vivo;
-     * caso contrário, explica o motivo e devolve null.
-     * Por que assim: mesma ideia da seleção do herói — valida o tipo e o estado
-     * num só ponto e usa null para mandar o chamador abortar.
-     *
-     * @return o monstro escolhido, ou null se a escolha for inválida
-     */
-    private Monstro selecionarMonstro() {
-        System.out.println("Número do Monstro inimigo:");
-        Personagem escolhido = repo.getFichas().get(sc.nextInt());
-        if (!(escolhido instanceof Monstro monstro)) {
-            System.out.println("O inimigo precisa ser um Monstro!");
-            return null;
-        }
-        if (!monstro.estaVivo()) {
-            System.out.println(monstro.getNome() + " já está morto!");
-            return null;
-        }
-        return monstro;
+        return combatente;
     }
 
     /**

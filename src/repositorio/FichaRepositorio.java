@@ -42,53 +42,69 @@ public class FichaRepositorio implements Exportavel {
 
             String linha;
             while ((linha = br.readLine()) != null) {
-                String[] campos = linha.split(";");
-
-                if (campos.length != 6) {
-                    throw new FichaInvalidaException("Ficha invalida: " + linha);
-                }
-
-                // A decisão Heroi/Monstro vem ANTES do valueOf: MONSTRO não
-                // existe no enum Classe, então não pode passar pela conversão
-                Personagem personagem;
-                if (campos[2].equals("MONSTRO")) {
-                    personagem = new Monstro();
-                } else {
-                    Heroi heroi = new Heroi();
-                    heroi.setClasse(Classe.valueOf(campos[2]));
-                    personagem = heroi;
-                }
-
-                personagem.setNome(campos[0]);
-                personagem.setSexo(Sexo.valueOf(campos[1]));
-
-                // A arma vem como "Nome:dano" — segundo split separa as partes
-                String[] dadosArma = campos[3].split(":");
-                Arma arma = new Arma();
-                arma.setNome(dadosArma[0]);
-                arma.setDano(Integer.parseInt(dadosArma[1]));
-                personagem.setArma(arma);
-
-                // Guerreiros e ladinos têm o campo de magia vazio (;;) —
-                // sem este if, o split/parseInt explodiria na string vazia
-                if (!campos[4].isEmpty()) {
-                    String[] dadosMagia = campos[4].split(":");
-                    Magia magia = new Magia();
-                    magia.setNome(dadosMagia[0]);
-                    magia.setDano(Integer.parseInt(dadosMagia[1]));
-                    personagem.setMagia(magia);
-                }
-
-                personagem.setVida(Integer.parseInt(campos[5]));
-
-                fichas.add(personagem);
+                fichas.add(lerFicha(linha));
             }
         } catch (IOException e) {
-            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            // Não imprime aqui: a persistência só sinaliza o erro; quem avisa o
+            // usuário é a camada de menu
+            throw new PersistenciaException("Erro ao ler o arquivo: " + caminho, e);
         } catch (IllegalArgumentException e) {
             // Traduz o erro técnico (parseInt/valueOf) para a exceção do domínio
             throw new FichaInvalidaException("Ficha com campo invalido: " + e.getMessage());
         }
+    }
+
+    /**
+     * Converte uma linha do arquivo em um Heroi ou Monstro já completo.
+     *
+     * @param linha linha no formato nome;sexo;classe;arma;magia;vida
+     * @return personagem montado a partir da linha
+     * @throws FichaInvalidaException se a linha estiver fora do formato esperado
+     */
+    private Personagem lerFicha(String linha) {
+        String[] campos = linha.split(";");
+        if (campos.length != 6) {
+            throw new FichaInvalidaException("Ficha invalida: " + linha);
+        }
+
+        Sexo sexo = Sexo.valueOf(campos[1]);
+
+        String[] dadosArma = separarNomeEDano(campos[3], linha);
+        Arma arma = new Arma(dadosArma[0], Integer.parseInt(dadosArma[1]));
+
+        // Guerreiros e ladinos têm o campo de magia vazio (;;) — sem magia equipada
+        Magia magia = null;
+        if (!campos[4].isEmpty()) {
+            String[] dadosMagia = separarNomeEDano(campos[4], linha);
+            magia = new Magia(dadosMagia[0], Integer.parseInt(dadosMagia[1]));
+        }
+
+        int vida = Integer.parseInt(campos[5]);
+
+        // A decisão Heroi/Monstro vem ANTES do valueOf: MONSTRO não existe no
+        // enum Classe, então não pode passar pela conversão
+        if (campos[2].equals("MONSTRO")) {
+            return new Monstro(campos[0], sexo, arma, magia, vida);
+        }
+        return new Heroi(campos[0], sexo, arma, magia, vida, Classe.valueOf(campos[2]));
+    }
+
+    /**
+     * Quebra um campo "Nome:dano" (arma ou magia) em [nome, dano], validando o
+     * formato — sem este split protegido, uma arma escrita só como "Espada"
+     * estouraria um ArrayIndexOutOfBoundsException não tratado.
+     *
+     * @param texto campo bruto (ex.: "Espada Longa:7")
+     * @param linha linha inteira, só para compor a mensagem de erro
+     * @return vetor de duas posições: nome e dano (ainda como texto)
+     * @throws FichaInvalidaException se faltar o ":" ou o valor do dano
+     */
+    private String[] separarNomeEDano(String texto, String linha) {
+        String[] dados = texto.split(":");
+        if (dados.length != 2) {
+            throw new FichaInvalidaException("Equipamento invalido na ficha: " + linha);
+        }
+        return dados;
     }
 
     /**
@@ -111,9 +127,10 @@ public class FichaRepositorio implements Exportavel {
     public void exportarDat(String caminho) {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(caminho))) {
             oos.writeObject(fichas);
-            System.out.println("Base exportada com sucesso!");
         } catch (IOException e) {
-            System.out.println("Erro ao salvar o arquivo: " + e.getMessage());
+            // Antes este erro era engolido (só imprimia): agora a falha sobe e o
+            // menu sabe que a exportação não deu certo
+            throw new PersistenciaException("Erro ao exportar para " + caminho, e);
         }
     }
 
@@ -129,9 +146,8 @@ public class FichaRepositorio implements Exportavel {
             // O readObject devolve Object genérico — o cast avisa o compilador
             // que ali dentro há uma List de Personagem (fomos nós que gravamos)
             fichas = (List<Personagem>) ois.readObject();
-            System.out.println("Base importada com sucesso!");
         } catch (IOException | ClassNotFoundException e) {
-            System.out.println("Erro ao importar o arquivo: " + e.getMessage());
+            throw new PersistenciaException("Erro ao importar de " + caminho, e);
         }
     }
 }
