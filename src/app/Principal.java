@@ -37,6 +37,7 @@ public class Principal {
         int opcao = -1;
         do {
             principal.exibirMenu();
+            System.out.print("Escolha uma opção: "); // print: o número fica na mesma linha
             try {
                 opcao = sc.nextInt();
                 menu.executar(opcao);

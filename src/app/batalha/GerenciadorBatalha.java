@@ -6,6 +6,7 @@ import modelo.Monstro;
 import modelo.Personagem;
 import repositorio.FichaRepositorio;
 
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -17,6 +18,9 @@ import java.util.Scanner;
  * o menu; aqui fica a responsabilidade única de conduzir um combate.
  */
 public class GerenciadorBatalha {
+
+    /** Quantos candidatos no máximo a tela lista antes de resumir o restante. */
+    private static final int MAX_LISTAGEM = 10;
 
     private final FichaRepositorio repo;
     private final Batalha batalha;
@@ -52,11 +56,11 @@ public class GerenciadorBatalha {
             return;
         }
 
-        Heroi heroi = selecionar(Heroi.class, "seu Herói", "Você só pode controlar Heróis!");
+        Heroi heroi = selecionar(Heroi.class, "Herói", "Você só pode controlar Heróis!");
         if (heroi == null) {
             return; // a mensagem do motivo já saiu na seleção
         }
-        Monstro monstro = selecionar(Monstro.class, "Monstro inimigo", "O inimigo precisa ser um Monstro!");
+        Monstro monstro = selecionar(Monstro.class, "Monstro", "O inimigo precisa ser um Monstro!");
         if (monstro == null) {
             return;
         }
@@ -77,22 +81,33 @@ public class GerenciadorBatalha {
 
     /**
      * O que é: a escolha validada de um combatente da base.
-     * O que faz: lê um índice e devolve o personagem só se ele for do tipo pedido
-     * (Heroi ou Monstro) e estiver vivo; caso contrário, explica o motivo e
+     * O que faz: mostra os candidatos válidos (com índice, nome e vida), sugere
+     * um, lê o índice digitado e devolve o personagem só se ele for do tipo
+     * pedido (Heroi ou Monstro) e estiver vivo; senão, explica o motivo e
      * devolve null.
      * Por que assim: herói e monstro tinham a MESMA validação (tipo + vivo)
-     * duplicada; um único método parametrizado pelo tipo elimina a repetição, e
-     * devolver null sinaliza ao chamador para abortar a batalha sem exceção.
+     * duplicada; um único método parametrizado pelo tipo elimina a repetição.
+     * A listagem evita que o jogador chute no escuro um índice de 0 a N.
      *
      * @param tipo     classe esperada do combatente (Heroi.class ou Monstro.class)
-     * @param papel    como o combatente aparece na pergunta ao jogador
+     * @param papel    como o combatente aparece na tela (ex.: "Herói", "Monstro")
      * @param erroTipo mensagem exibida quando o escolhido não é do tipo esperado
      * @param <T>      tipo do combatente selecionado
      * @return o combatente escolhido, ou null se a escolha for inválida
      */
     private <T extends Personagem> T selecionar(Class<T> tipo, String papel, String erroTipo) {
-        System.out.println("Número do " + papel + " (0 a " + (repo.getFichas().size() - 1) + "):");
-        Personagem escolhido = repo.getFichas().get(sc.nextInt());
+        List<Personagem> fichas = repo.getFichas();
+
+        Integer sugestao = listarCandidatos(fichas, tipo, papel);
+        if (sugestao == null) {
+            System.out.println("Não há " + papel + " vivo disponível para a batalha!");
+            return null;
+        }
+
+        // print mantém o cursor na linha para o jogador digitar logo após o ":"
+        System.out.print("Digite o número do " + papel + " (sugestão: " + sugestao
+                + ") [0 a " + (fichas.size() - 1) + "]: ");
+        Personagem escolhido = fichas.get(sc.nextInt());
         if (!tipo.isInstance(escolhido)) {
             System.out.println(erroTipo);
             return null;
@@ -106,6 +121,48 @@ public class GerenciadorBatalha {
     }
 
     /**
+     * O que é: o cardápio de quem o jogador pode escolher.
+     * O que faz: imprime os combatentes do tipo pedido que estão vivos (índice,
+     * nome e vida), até MAX_LISTAGEM, resumindo o resto; devolve o índice do
+     * primeiro deles como sugestão.
+     * Por que assim: sem essa lista o jogador não tinha como saber qual índice é
+     * Herói e qual é Monstro — escolhia 0 a N no escuro. A sugestão dá um caminho
+     * rápido para quem só quer começar a luta.
+     *
+     * @param fichas base atual de personagens (na mesma ordem dos índices)
+     * @param tipo   tipo aceito nesta seleção (Heroi.class ou Monstro.class)
+     * @param papel  rótulo do tipo para o cabeçalho da lista
+     * @param <T>    tipo do combatente
+     * @return o índice do primeiro candidato vivo (sugestão), ou null se não houver
+     */
+    private <T extends Personagem> Integer listarCandidatos(List<Personagem> fichas, Class<T> tipo, String papel) {
+        Integer sugestao = null;
+        int total = 0;
+
+        System.out.println("=== " + papel + "s disponíveis (vivos) ===");
+        for (int i = 0; i < fichas.size(); i++) {
+            Personagem ficha = fichas.get(i);
+            if (!tipo.isInstance(ficha) || !ficha.estaVivo()) {
+                continue; // pula quem não é do tipo certo ou já está morto
+            }
+
+            total++;
+            if (sugestao == null) {
+                sugestao = i; // o primeiro vivo do tipo vira a sugestão padrão
+            }
+            if (total <= MAX_LISTAGEM) {
+                System.out.println("  [" + i + "] " + ficha.getNome() + " - vida " + ficha.getVida());
+            }
+        }
+
+        if (total > MAX_LISTAGEM) {
+            System.out.println("  ... e mais " + (total - MAX_LISTAGEM)
+                    + " (pode digitar o número de qualquer um da base)");
+        }
+        return sugestao;
+    }
+
+    /**
      * O que é: o turno do jogador.
      * O que faz: pergunta a ação (1 atacar / 2 habilidade) e executa — atacar
      * passa pela Batalha (o monstro defende), habilidade cura o próprio herói.
@@ -116,7 +173,8 @@ public class GerenciadorBatalha {
      * @param monstro inimigo
      */
     private void turnoDoHeroi(Heroi heroi, Monstro monstro) {
-        System.out.println("Sua ação: 1 - Atacar | 2 - Usar Habilidade");
+        // print deixa o cursor na mesma linha: o jogador digita logo após o ":"
+        System.out.print("Sua ação (1 - Atacar | 2 - Usar Habilidade): ");
         switch (sc.nextInt()) {
             case 1 -> {
                 batalha.executarTurno(heroi, monstro);
