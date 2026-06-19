@@ -3,19 +3,15 @@ package combate;
 import modelo.Personagem;
 
 /**
- * Contrato de quem pode lutar: todo combatente sabe atacar um personagem
- * e se defender de uma quantidade de dano.
- * Implementada por Heroi e Monstro, cada um com as próprias regras.
+ * Contrato de quem pode lutar: sabe atacar um personagem, se defender de um dano
+ * e calcular o próprio golpe. Implementada por Heroi e Monstro.
  */
 public interface Combatente {
 
     /**
      * Ataca o alvo com a regra única do combate: calcula o próprio dano e o
-     * entrega ao defender() do alvo, que aplica a própria redução de defesa.
-     * É um default method porque Heroi e Monstro faziam exatamente isto — manter
-     * aqui evita duplicar o golpe nas duas classes.
-     *
-     * @param alvo alvo do ataque
+     * entrega ao defender() do alvo. É um default method porque Heroi e Monstro
+     * faziam exatamente isto — evita duplicar o golpe nas duas classes.
      */
     default void atacar(Personagem alvo) {
         if (alvo instanceof Combatente defensor) {
@@ -23,21 +19,13 @@ public interface Combatente {
         }
     }
 
-    /**
-     * Recebe um golpe, podendo reduzir o dano conforme as regras de quem implementa.
-     *
-     * @param dano quantidade de dano bruto recebido
-     */
+    /** Recebe um golpe, podendo reduzir o dano conforme as regras de quem implementa. */
     void defender(int dano);
 
     /**
-     * O que é: o dano bruto que este combatente produz num golpe.
-     * O que faz: calcula a arma (+ magia, conforme as regras de cada um) sem
-     * aplicar nada em ninguém.
-     * Por que assim: separar o cálculo da aplicação permite à Batalha mandar
-     * esse dano ao defender() do alvo — é o defensor quem decide quanto absorve.
-     *
-     * @return dano bruto do golpe, antes de qualquer defesa
+     * Dano bruto do golpe (arma + magia, conforme cada um), sem aplicar nada.
+     * Separar o cálculo da aplicação deixa a Batalha mandar o dano ao defender()
+     * do alvo — é o defensor quem decide quanto absorve.
      */
     int calcularDano();
 }

@@ -8,23 +8,12 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 /**
- * O que é: ponto de entrada do CodexBellum — a tela do menu de console.
- * O que faz: monta as dependências, exibe o menu e, a cada opção lida, pede ao
- * GerenciadorMenu para executá-la, repetindo até o usuário digitar 0.
- * Por que assim: o Principal cuida só do laço e da exibição do menu; o que cada
- * opção faz mora no GerenciadorMenu, mantendo o ponto de entrada minúsculo.
+ * Ponto de entrada do CodexBellum: monta as dependências, exibe o menu e, a cada
+ * opção lida, pede ao GerenciadorMenu para executá-la, até o usuário digitar 0.
+ * O que cada opção faz mora no GerenciadorMenu, mantendo o main curto.
  */
 public class Principal {
 
-    /**
-     * O que é: o laço principal do programa.
-     * O que faz: repete "mostrar menu → ler opção → executar" até o usuário
-     * digitar 0, tratando entrada inválida e índice inexistente.
-     * Por que assim: a leitura e o tratamento de erro ficam num só lugar; a
-     * execução da opção é delegada, então o main permanece curto.
-     *
-     * @param args não utilizado
-     */
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         FichaRepositorio fichaRepositorio = new FichaRepositorio();
@@ -37,7 +26,7 @@ public class Principal {
         int opcao = -1;
         do {
             principal.exibirMenu();
-            System.out.print("Escolha uma opção: "); // print: o número fica na mesma linha
+            System.out.print("Escolha uma opção: ");
             try {
                 opcao = sc.nextInt();
                 menu.executar(opcao);
@@ -54,12 +43,6 @@ public class Principal {
         sc.close();
     }
 
-    /**
-     * O que é: a tela do menu.
-     * O que faz: apenas imprime as opções disponíveis.
-     * Por que assim: separa a exibição da decisão — quem lê e roteia é o main,
-     * e quem executa cada opção é o GerenciadorMenu.
-     */
     public void exibirMenu() {
         System.out.println("=== CodexBellum ===");
         System.out.println("1 - Carregar fichas do txt");

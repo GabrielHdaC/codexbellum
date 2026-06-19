@@ -20,22 +20,15 @@ public class Magia extends Equipamento {
     public Magia() {
     }
 
-    /**
-     * Cria a magia já completa.
-     *
-     * @param nome nome da magia
-     * @param dano dano que ela causa
-     */
+    /** Cria a magia já completa. */
     public Magia(String nome, int dano) {
         super(nome, dano);
     }
 
     /**
-     * Deduz a natureza da magia pelo nome: as listadas em NOMES_DE_CURA são de
-     * cura, todas as outras são de dano. Usado pela classe do herói para decidir
-     * entre reforçar a cura (usarHabilidade) ou o golpe (atacar).
-     *
-     * @return CURA se for uma magia de cura/suporte, senão DANO
+     * Deduz a natureza da magia pelo nome: as de NOMES_DE_CURA são de cura, as
+     * demais de dano. O clérigo usa isso para decidir entre reforçar a cura
+     * (usarHabilidade) ou o golpe (atacar).
      */
     public TipoMagia getTipo() {
         return NOMES_DE_CURA.contains(getNome()) ? TipoMagia.CURA : TipoMagia.DANO;
