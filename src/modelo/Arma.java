@@ -10,12 +10,7 @@ public class Arma extends Equipamento {
     public Arma() {
     }
 
-    /**
-     * Cria a arma já completa.
-     *
-     * @param nome nome da arma
-     * @param dano dano que ela causa
-     */
+    /** Cria a arma já completa. */
     public Arma(String nome, int dano) {
         super(nome, dano);
     }

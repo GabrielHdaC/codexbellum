@@ -10,12 +10,9 @@ import java.util.List;
 import java.util.Scanner;
 
 /**
- * O que é: o controlador da batalha interativa do console — um Herói (você)
- * contra um Monstro (a "IA").
- * O que faz: escolhe e valida os combatentes, roda os turnos até alguém zerar
- * a vida e anuncia o vencedor.
- * Por que assim: tirar essa lógica do Principal deixa o ponto de entrada só com
- * o menu; aqui fica a responsabilidade única de conduzir um combate.
+ * Conduz a batalha interativa do console — um Herói (você) contra um Monstro
+ * (a "IA"): escolhe e valida os combatentes, roda os turnos e anuncia o vencedor.
+ * Tirar isso do Principal deixa o ponto de entrada só com o menu.
  */
 public class GerenciadorBatalha {
 
@@ -26,17 +23,6 @@ public class GerenciadorBatalha {
     private final Batalha batalha;
     private final Scanner sc;
 
-    /**
-     * O que é: o construtor do controlador de batalha.
-     * O que faz: guarda as dependências que o combate usa (fichas, regras de
-     * turno e leitor de entrada).
-     * Por que assim: recebendo tudo pronto, os métodos internos ficam sem
-     * parâmetros repetidos e o Principal só precisa montar o objeto e chamar iniciar().
-     *
-     * @param repo    repositório com as fichas
-     * @param batalha coordenador de turno (calcula dano e aplica defesa)
-     * @param sc      leitor da entrada do console
-     */
     public GerenciadorBatalha(FichaRepositorio repo, Batalha batalha, Scanner sc) {
         this.repo = repo;
         this.batalha = batalha;
@@ -44,11 +30,9 @@ public class GerenciadorBatalha {
     }
 
     /**
-     * O que é: a entrada pública do combate.
-     * O que faz: valida que há fichas, deixa escolher herói e monstro e roda os
-     * turnos até alguém cair, anunciando o vencedor.
-     * Por que assim: o jogador só controla Heróis e mortos não voltam à arena —
-     * por isso as validações antes do laço; o Principal chama só este método.
+     * Entrada do combate: valida que há fichas, deixa escolher herói e monstro e
+     * roda os turnos até alguém cair. O jogador só controla Heróis e mortos não
+     * entram na arena — daí as validações antes do laço.
      */
     public void iniciar() {
         if (repo.getFichas().isEmpty()) {
@@ -80,19 +64,11 @@ public class GerenciadorBatalha {
     }
 
     /**
-     * O que é: a escolha validada de um combatente da base.
-     * O que faz: mostra os candidatos válidos (com índice, nome e vida), sugere
-     * um, lê o índice digitado e devolve o personagem só se ele for do tipo
-     * pedido (Heroi ou Monstro) e estiver vivo; senão, explica o motivo e
-     * devolve null.
-     * Por que assim: herói e monstro tinham a MESMA validação (tipo + vivo)
-     * duplicada; um único método parametrizado pelo tipo elimina a repetição.
-     * A listagem evita que o jogador chute no escuro um índice de 0 a N.
+     * Escolhe um combatente da base: lista os candidatos, lê o índice e devolve o
+     * personagem só se for do tipo pedido e estiver vivo; senão avisa e devolve
+     * null. Um único método parametrizado pelo tipo evita duplicar essa validação
+     * para herói e monstro.
      *
-     * @param tipo     classe esperada do combatente (Heroi.class ou Monstro.class)
-     * @param papel    como o combatente aparece na tela (ex.: "Herói", "Monstro")
-     * @param erroTipo mensagem exibida quando o escolhido não é do tipo esperado
-     * @param <T>      tipo do combatente selecionado
      * @return o combatente escolhido, ou null se a escolha for inválida
      */
     private <T extends Personagem> T selecionar(Class<T> tipo, String papel, String erroTipo) {
@@ -104,7 +80,6 @@ public class GerenciadorBatalha {
             return null;
         }
 
-        // print mantém o cursor na linha para o jogador digitar logo após o ":"
         System.out.print("Digite o número do " + papel + " (sugestão: " + sugestao
                 + ") [0 a " + (fichas.size() - 1) + "]: ");
         Personagem escolhido = fichas.get(sc.nextInt());
@@ -121,19 +96,11 @@ public class GerenciadorBatalha {
     }
 
     /**
-     * O que é: o cardápio de quem o jogador pode escolher.
-     * O que faz: imprime os combatentes do tipo pedido que estão vivos (índice,
-     * nome e vida), até MAX_LISTAGEM, resumindo o resto; devolve o índice do
-     * primeiro deles como sugestão.
-     * Por que assim: sem essa lista o jogador não tinha como saber qual índice é
-     * Herói e qual é Monstro — escolhia 0 a N no escuro. A sugestão dá um caminho
-     * rápido para quem só quer começar a luta.
+     * Lista os combatentes vivos do tipo pedido (índice, nome e vida), até
+     * MAX_LISTAGEM, e devolve o índice do primeiro como sugestão. Sem essa lista
+     * o jogador escolheria um índice de 0 a N no escuro.
      *
-     * @param fichas base atual de personagens (na mesma ordem dos índices)
-     * @param tipo   tipo aceito nesta seleção (Heroi.class ou Monstro.class)
-     * @param papel  rótulo do tipo para o cabeçalho da lista
-     * @param <T>    tipo do combatente
-     * @return o índice do primeiro candidato vivo (sugestão), ou null se não houver
+     * @return o índice do primeiro candidato vivo, ou null se não houver
      */
     private <T extends Personagem> Integer listarCandidatos(List<Personagem> fichas, Class<T> tipo, String papel) {
         Integer sugestao = null;
@@ -143,7 +110,7 @@ public class GerenciadorBatalha {
         for (int i = 0; i < fichas.size(); i++) {
             Personagem ficha = fichas.get(i);
             if (!tipo.isInstance(ficha) || !ficha.estaVivo()) {
-                continue; // pula quem não é do tipo certo ou já está morto
+                continue;
             }
 
             total++;
@@ -162,18 +129,8 @@ public class GerenciadorBatalha {
         return sugestao;
     }
 
-    /**
-     * O que é: o turno do jogador.
-     * O que faz: pergunta a ação (1 atacar / 2 habilidade) e executa — atacar
-     * passa pela Batalha (o monstro defende), habilidade cura o próprio herói.
-     * Por que assim: o ataque vai pela Batalha para o monstro poder reduzir o
-     * dano; uma ação inválida só perde o turno, sem travar o combate.
-     *
-     * @param heroi   herói do jogador
-     * @param monstro inimigo
-     */
+    /** Turno do jogador: ataca (passa pela Batalha, o monstro defende) ou usa a habilidade. */
     private void turnoDoHeroi(Heroi heroi, Monstro monstro) {
-        // print deixa o cursor na mesma linha: o jogador digita logo após o ":"
         System.out.print("Sua ação (1 - Atacar | 2 - Usar Habilidade): ");
         switch (sc.nextInt()) {
             case 1 -> {
@@ -188,16 +145,7 @@ public class GerenciadorBatalha {
         }
     }
 
-    /**
-     * O que é: o turno do monstro, jogado pela "IA" simples.
-     * O que faz: consulta deveUsarHabilidade() — cura-se se estiver ferido,
-     * senão ataca o herói pela Batalha.
-     * Por que assim: a decisão mora no Monstro (é o "cérebro" dele); aqui só
-     * executamos a jogada escolhida e narramos o resultado.
-     *
-     * @param heroi   herói do jogador
-     * @param monstro inimigo
-     */
+    /** Turno do monstro: a decisão (curar ou atacar) mora no próprio Monstro; aqui só executamos. */
     private void turnoDoMonstro(Heroi heroi, Monstro monstro) {
         if (monstro.deveUsarHabilidade()) {
             monstro.usarHabilidade();

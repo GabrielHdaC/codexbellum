@@ -4,10 +4,9 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Item equipável por um personagem, no formato "Nome:dano" do fichas.txt.
- * Base comum de Arma e Magia, que compartilham nome, dano e as regras de
- * igualdade — extrair esta classe elimina a duplicação que existia entre as
- * duas. Serializable para ser gravado junto na exportação binária.
+ * Item equipável por um personagem, no formato "Nome:dano" do fichas.txt. Base
+ * comum de Arma e Magia, que compartilham nome, dano e as regras de igualdade.
+ * Serializable para ser gravado na exportação binária.
  */
 public abstract class Equipamento implements Serializable {
     private String nome;
@@ -17,12 +16,7 @@ public abstract class Equipamento implements Serializable {
     protected Equipamento() {
     }
 
-    /**
-     * Cria o equipamento já completo.
-     *
-     * @param nome nome do equipamento
-     * @param dano dano que ele causa
-     */
+    /** Cria o equipamento já completo. */
     protected Equipamento(String nome, int dano) {
         this.nome = nome;
         this.dano = dano;
@@ -60,7 +54,6 @@ public abstract class Equipamento implements Serializable {
         return dano == outro.dano && Objects.equals(nome, outro.nome);
     }
 
-    /** Anda em par com o equals: objetos iguais devem ter o mesmo hash. */
     @Override
     public int hashCode() {
         return Objects.hash(nome, dano);

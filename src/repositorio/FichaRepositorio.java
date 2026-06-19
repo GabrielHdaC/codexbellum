@@ -8,20 +8,18 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * Guarda a base de fichas (heróis e monstros) e cuida da persistência:
- * leitura do arquivo texto, ordenação e exportação/importação binária (.dat).
+ * Guarda a base de fichas (heróis e monstros) e cuida da persistência: leitura
+ * do arquivo texto, ordenação e exportação/importação binária (.dat).
  */
 public class FichaRepositorio implements Exportavel {
 
     private List<Personagem> fichas = new ArrayList<>();
 
     /**
-     * Devolve as fichas em uma cópia defensiva: quem chama pode ler e iterar,
-     * mas não consegue alterar a lista interna do repositório (encapsulamento).
-     * A cópia é rasa de propósito: os personagens dentro são os mesmos objetos,
+     * Devolve as fichas em uma cópia defensiva: quem chama pode ler e iterar, mas
+     * não consegue alterar a lista interna do repositório (encapsulamento). A
+     * cópia é rasa de propósito — os personagens dentro são os mesmos objetos,
      * pois a batalha precisa alterar a vida deles.
-     *
-     * @return cópia da lista de fichas
      */
     public List<Personagem> getFichas() {
         return new ArrayList<>(fichas);
@@ -31,7 +29,6 @@ public class FichaRepositorio implements Exportavel {
      * Lê o arquivo texto (formato nome;sexo;classe;arma;magia;vida) e converte
      * cada linha em um Heroi ou Monstro dentro da lista.
      *
-     * @param caminho caminho do arquivo .txt
      * @throws FichaInvalidaException se alguma linha estiver fora do formato
      */
     public void lerTxt(String caminho) {
@@ -54,13 +51,7 @@ public class FichaRepositorio implements Exportavel {
         }
     }
 
-    /**
-     * Converte uma linha do arquivo em um Heroi ou Monstro já completo.
-     *
-     * @param linha linha no formato nome;sexo;classe;arma;magia;vida
-     * @return personagem montado a partir da linha
-     * @throws FichaInvalidaException se a linha estiver fora do formato esperado
-     */
+    /** Converte uma linha (nome;sexo;classe;arma;magia;vida) em um Heroi ou Monstro completo. */
     private Personagem lerFicha(String linha) {
         String[] campos = linha.split(";");
         if (campos.length != 6) {
@@ -92,12 +83,8 @@ public class FichaRepositorio implements Exportavel {
     /**
      * Quebra um campo "Nome:dano" (arma ou magia) em [nome, dano], validando o
      * formato — sem este split protegido, uma arma escrita só como "Espada"
-     * estouraria um ArrayIndexOutOfBoundsException não tratado.
-     *
-     * @param texto campo bruto (ex.: "Espada Longa:7")
-     * @param linha linha inteira, só para compor a mensagem de erro
-     * @return vetor de duas posições: nome e dano (ainda como texto)
-     * @throws FichaInvalidaException se faltar o ":" ou o valor do dano
+     * estouraria um ArrayIndexOutOfBoundsException não tratado. A linha inteira
+     * entra só para compor a mensagem de erro.
      */
     private String[] separarNomeEDano(String texto, String linha) {
         String[] dados = texto.split(":");
@@ -107,9 +94,7 @@ public class FichaRepositorio implements Exportavel {
         return dados;
     }
 
-    /**
-     * Ordena a base da menor para a maior vida.
-     */
+    /** Ordena a base da menor para a maior vida. */
     public void ordenarPorVida() {
         // Personagem::getVida é um method reference: "compare pelo valor
         // que o getVida de cada personagem devolver"
@@ -117,11 +102,8 @@ public class FichaRepositorio implements Exportavel {
     }
 
     /**
-     * Grava a base inteira em arquivo binário.
-     * Um único writeObject basta: o ArrayList serializa junto todos os
-     * personagens (e as armas e magias penduradas em cada um).
-     *
-     * @param caminho caminho do arquivo .dat a criar
+     * Grava a base inteira em arquivo binário. Um único writeObject basta: o
+     * ArrayList serializa junto todos os personagens (e suas armas e magias).
      */
     @Override
     public void exportarDat(String caminho) {
@@ -134,11 +116,7 @@ public class FichaRepositorio implements Exportavel {
         }
     }
 
-    /**
-     * Restaura a base a partir de um arquivo binário gravado pelo exportarDat.
-     *
-     * @param caminho caminho do arquivo .dat a ler
-     */
+    /** Restaura a base a partir de um arquivo binário gravado pelo exportarDat. */
     @Override
     @SuppressWarnings("unchecked")
     public void importarDat(String caminho) {
