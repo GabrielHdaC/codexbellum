@@ -95,6 +95,29 @@ São 2 classes de teste (`BatalhaTest`, `FichaRepositorioTest`). `out_test/` e `
 - Termine a mensagem de commit com:
   `Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>`
 
+## Fluxo automatizado de PR (padrão)
+
+`gh` (GitHub CLI) já está instalado e autenticado (conta GabrielHdaC, HTTPS).
+Quando o usuário pedir "abre o PR" / "commita", executo o ciclo completo de uma vez —
+sem deixar URL para o usuário clicar:
+
+```bash
+git checkout -b <tipo>/<descricao-curta>      # nunca commitar direto na main
+# rodar a suite de testes (secao acima) ANTES de commitar
+git add <arquivos>
+git commit -m "..."                            # com Co-Authored-By
+git push -u origin <branch>
+gh pr create --base main --head <branch> --title "..." --body "..."
+```
+
+- Prefixos de branch: `docs/`, `feature/`, `refactor/`, `fix/`.
+- Corpo do PR termina com:
+  `🤖 Generated with [Claude Code](https://claude.com/claude-code)`
+- **Não mergear pela URL manualmente** enquanto o ciclo é automatizado: deixar o
+  merge para `gh pr merge` (ou pedir explicitamente). Mergear pela web faz o `main`
+  local divergir — foi o que motivou esta automação.
+- Depois do merge: `git checkout main && git pull --ff-only && git branch -d <branch>`.
+
 ## Estado / decisões consolidadas (memória central)
 
 - **Build:** Java puro, sem Maven/Gradle; JUnit 5 standalone em `lib/`.
